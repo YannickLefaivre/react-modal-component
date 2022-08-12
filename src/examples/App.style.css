@@ -1,0 +1,15 @@
+.main-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.example-description {
+  width: 50%;
+  line-height: 1.5;
+}
+
+.button {
+  cursor: pointer;
+}

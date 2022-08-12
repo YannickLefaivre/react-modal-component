@@ -1,14 +1,8 @@
+import { Landing } from "./routes/landing/Landing"
+import "./App.style.css"
+
 const App = () => {
-  return (
-    <>
-      <header>
-        <h1>Headless UI Modal usage examples</h1>
-      </header>
-      <main>
-        <div>Employee successfuly created</div>
-      </main>
-    </>
-  )
+  return <Landing />
 }
 
-export default App
+export { App }
