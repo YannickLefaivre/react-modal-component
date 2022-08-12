@@ -23,8 +23,8 @@ const Landing = () => {
           You can use the Modal component in
           different ways either by including it
           directly in the component that holds the
-          open button or as in this example, by
-          wrapping it in a custom modal component.
+          open button or by wrapping it in a custom
+          modal component.
         </p>
 
         <button

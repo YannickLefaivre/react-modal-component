@@ -1,6 +1,7 @@
 .main-content--landing {
   display: flex;
   justify-content: space-between;
+  text-align: justify;
 }
 
 .success-button {
