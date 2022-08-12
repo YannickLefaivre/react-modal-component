@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import "./Modal.style.css"
 
 /**
@@ -45,6 +46,7 @@ import "./Modal.style.css"
  * // YourStylizedModal.jsx
  *
  * import { Modal } from "react-modal-component"
+ * ... // other import statements
  *
  * const YourStylizedModal = ({ isOpen, handleClose }) => {
  *   return (
@@ -72,11 +74,22 @@ import "./Modal.style.css"
  *
  * // App.jsx
  *
- * import { useState } from "react"
+ * import { useState, useRef } from "react"
  * import { YourStylizedModal } from "./path/to/your/component/folder"
+ * ... // other import statements
  *
  * const App = () => {
  *   const [isOpen, setIsOpen] = useState(false)
+ *
+ *   // Allows you to give focus to the last element to have it
+ *   // before the modal opened.
+ *   const openButtonRef = useRef(null)
+ *
+ *   const handleClose = () => {
+ *     setIsOpen(false)
+ *
+ *     openButtonRef.current.focus()
+ *   }
  *
  *   return (
  *     <>
@@ -86,6 +99,7 @@ import "./Modal.style.css"
  *
  *       <main>
  *         <button
+ *           ref={openButtonRef}
  *           onClick={() => setIsOpen(true)}
  *           className="button success-button"
  *         >
@@ -108,6 +122,8 @@ const Modal = ({
   onClose,
 }) => {
   const handleClose = (event) => {
+    document.body.classList.remove("disable-scroll")
+
     if (event.type === "keyup") {
       if (event.key === "Escape") {
         onClose()
@@ -116,6 +132,12 @@ const Modal = ({
       onClose()
     }
   }
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("disable-scroll")
+    }
+  }, [isOpen])
 
   return (
     <div
