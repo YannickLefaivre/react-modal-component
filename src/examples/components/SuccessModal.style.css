@@ -1,0 +1,14 @@
+.success-modal {
+  background-color: rgba(100, 100, 100, 0.5);
+}
+
+.success-modal__content {
+  width: 45%;
+  height: 50%;
+  background-color: white;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,31 @@
+.disable-scroll {
+  overflow: hidden;
+}
+
+.react-modal-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99;
+  overflow: auto;
+}
+
+.react-modal-component--close {
+  z-index: -1;
+}
+
+.react-modal-component__overlay {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: inherit;
+}

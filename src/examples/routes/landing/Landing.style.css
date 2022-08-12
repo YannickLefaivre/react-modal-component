@@ -1,0 +1,13 @@
+.main-content--landing {
+  display: flex;
+  justify-content: space-between;
+  text-align: justify;
+}
+
+.success-button {
+  color: white;
+  background-color: rgb(50, 150, 50);
+  border: rgb(20, 90, 20);
+  padding: 8px;
+  border-radius: 5px;
+}
