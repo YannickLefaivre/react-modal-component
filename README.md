@@ -190,6 +190,6 @@ const Landing = () => {
 }
 ```
 
-# 3. Consult the documentation
+## 2. Consult the documentation
 
 Documentation of the code can be found in the docs folder. By opening the [project github page](https://yannicklefaivre.github.io/react-modal-component/), you will have access to this file _(README.md)_ as well as to the documentation of the modal component.
