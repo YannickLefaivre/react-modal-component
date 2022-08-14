@@ -1,6 +1,7 @@
 {
   "name": "react-modal-component",
-  "version": "0.5.0",
+  "description": "Modal component constructed to be design independent.",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -22,7 +23,6 @@
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-live": "^2.4.1",
     "react-scripts": "^5.0.0"
   },
   "peerDependencies": {
