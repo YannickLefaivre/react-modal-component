@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Home</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#Modal">Modal</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p></p>
+                    <h1>Home</h1>
+                </header>
+                
+
+
+
+    
+
+
+    <h3> </h3>
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+    <section>
+        <article><h1>React Modal Component</h1>
+<p>React Modal Component is a fully customizable modal.</p>
+<blockquote>
+<p>I followed the tutorial <a href="https://hackernoon.com/creating-a-library-of-react-components-using-create-react-app-without-ejecting-d182df690c6b">&quot;Creating a library of React components using Create React App&quot;</a> in order to create this package.</p>
+</blockquote>
+<h2>1. Installation</h2>
+<h3>1.1 prerequisites</h3>
+<p><strong>You will need at least react@17.0.2 to use this package.</strong></p>
+<p>If you have a higher version, you will need to downgrade your project. To do this, you must delete your <em>package-lock.json</em> file and your <em>node_modules</em> directory.</p>
+<p>Then uninstall your current version of react and react-dom with the command <code>npm uninstall react react-dom.</code></p>
+<p>Then, reinstall all your packages with the command <code>npm install</code> and install react 17 with the command <code>npm install react@17.0.2 react-dom@17.0.2</code></p>
+<blockquote>
+<p>After downgrading your project, you may encounter problems with other packages, such as @testing-library/react. You can check for yourself which version of testing-library/react supports react 17 or simply install @testing-library/react@11.1.0 after uninstalling its currently installed version.</p>
+</blockquote>
+<h3>1.2 To start using it</h3>
+<pre class="prettyprint source"><code>npm install @yl/react-modal-component
+</code></pre>
+<h2>2. Usage</h2>
+<h3>2.1 Basic</h3>
+<p>There are two ways to use the Modal component:</p>
+<ul>
+<li>One is to simply use it as is, while assigning it your own design with the overlay customization class and the addition of child elements.</li>
+</ul>
+<pre class="prettyprint source"><code>// routes/Landing.jsx
+
+import { useState } from &quot;react&quot;
+import { Modal } from &quot;react-modal-component&quot;
+... // other import statements
+import &quot;./SpecificModalType.style.css&quot;
+
+const Landing = () => {
+    const [isOpen, setIsOpen] = useState(false)
+
+    return (
+        &lt;>
+            &lt;header>
+                &lt;h1>Example modal&lt;/h1>
+            &lt;/header>
+
+            &lt;main>
+                &lt;button
+                    onClick={() => setIsOpen(true)}
+                    className=&quot;button success-button&quot;
+                >
+                    Open success modal
+                &lt;/button>
+            &lt;/main>
+
+            &lt;Modal
+                isOpen={isOpen}
+                onClose={() => setIsOpen(false)}
+                overlayClassName=&quot;success-modal&quot;
+            >
+                &lt;div
+                    className=&quot;success-modal__content&quot;
+                >
+                    &lt;p>Employee created!&lt;/p>
+
+                    &lt;button
+                        autoFocus
+                        onClick={() => setIsOpen(false)}
+                        className=&quot;button&quot;
+                    >
+                        Close
+                    &lt;/button>
+                &lt;/div>
+            &lt;/Modal>
+        &lt;/>
+    )
+}
+</code></pre>
+<ul>
+<li>And the other, to encapsulate it in your different types of modal component (simple modal, lightbox, etc...). To include, your modal presets/customizations in your own component library.</li>
+</ul>
+<pre class="prettyprint source"><code>// component-library/SpecificModalType.jsx
+
+import { Modal } from &quot;react-modal-component&quot;
+... // other import statements
+import &quot;./SpecificModalType.style.css&quot;
+
+const SpecificModalType = ({ isOpen, handleClose }) => {
+    return (
+        &lt;Modal
+            isOpen={isOpen}
+            onClose={handleClose}
+            overlayClassName=&quot;success-modal&quot;
+        >
+            &lt;div
+                className=&quot;success-modal__content&quot;
+            >
+                &lt;p>Employee created!&lt;/p>
+
+                &lt;button
+                    autoFocus
+                    onClick={handleClose}
+                    className=&quot;button&quot;
+                >
+                    Close
+                &lt;/button>
+            &lt;/div>
+        &lt;/Modal>
+    )
+}
+
+// routes/Landing.jsx
+
+import { useState } from &quot;react&quot;
+import { SpecificModalType } from &quot;./path/to/your/component/folder&quot;
+... // other import statements
+
+const Landing = () => {
+    const [isOpen, setIsOpen] = useState(false)
+
+    return (
+        &lt;>
+            &lt;header>
+                &lt;h1>Example modal&lt;/h1>
+            &lt;/header>
+
+            &lt;main>
+                &lt;button
+                    onClick={() => setIsOpen(true)}
+                    className=&quot;button success-button&quot;
+                >
+                    Open success modal
+                &lt;/button>
+            &lt;/main>
+
+            &lt;SpecificModalType
+                isOpen={isOpen}
+                handleClose={() => setIsOpen(false)}
+            />
+        &lt;/>
+    )
+}
+</code></pre>
+<h3>2.2 Advanced</h3>
+<p>To put the focus back on the last item that was active before the modal was opened. Use the useRef hook to retrieve the reference of this element and use its current property to give it focus when closing the modal:</p>
+<pre class="prettyprint source"><code>// routes/Landing.jsx
+
+const Landing = () => {
+    const [isOpen, setIsOpen] = useState(false)
+    const openButtonRef = useRef(null)
+
+    const handleClose = () => {
+      setIsOpen(false)
+
+      openButtonRef.current.focus()
+    }
+
+    return (
+      &lt;>
+        &lt;header>
+          &lt;h1>Example modal&lt;/h1>
+        &lt;/header>
+
+        &lt;main>
+          &lt;button
+            ref={openButtonRef}
+            onClick={() => setIsOpen(true)}
+            className=&quot;button success-button&quot;
+          >
+            Open success modal
+          &lt;/button>
+        &lt;/main>
+
+        &lt;SpecificModalType
+          isOpen={isOpen}
+          handleClose={handleClose}
+        />
+      &lt;/>
+    )
+}
+</code></pre>
+<h1>3. Documentation</h1>
+<p>Documentation of the code can be found in the docs folder. By opening the <a href="https://yannicklefaivre.github.io/react-modal-component/">project github page</a>, you will have access to this file <em>(README.md)</em> as well as to the documentation of the modal component.</p></article>
+    </section>
+
+
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>
