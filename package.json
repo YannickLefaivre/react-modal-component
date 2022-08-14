@@ -1,6 +1,7 @@
 {
   "name": "react-modal-component",
-  "version": "0.4.1",
+  "description": "Modal component constructed to be design independent.",
+  "version": "1.0.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
@@ -11,6 +12,12 @@
     "type": "git",
     "url": "https://github.com/YannickLefaivre/react-modal-component"
   },
+  "keywords": [
+    "react",
+    "modal",
+    "component",
+    "customizable"
+  ],
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^11.1.0",
@@ -22,7 +29,6 @@
     "prop-types": "^15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-live": "^2.4.1",
     "react-scripts": "^5.0.0"
   },
   "peerDependencies": {
@@ -35,7 +41,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
-    "generate-docs": "jsdoc src -c jsdoc.config.json -R README.md"
+    "generate-docs": "jsdoc src/lib -c jsdoc.config.json -R README.md"
   },
   "browserslist": {
     "development": [

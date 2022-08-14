@@ -1,0 +1,297 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Modal.jsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#Modal">Modal</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>Modal.jsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { useEffect } from "react"
+import PropTypes from "prop-types"
+import "./Modal.style.css"
+
+/**
+ * @callback onClose
+ * @param {MouseEvent | KeyboardEvent} event
+ *
+ * @returns {void}
+ */
+
+/**
+ * @typedef {Object} ModalProps
+ *
+ * @property {Boolean} isOpen
+ *
+ * @property {ReactNode} children Represents the
+ * content of the modal.
+ *
+ * @property {onClose} onClose The callback function
+ * that sets isOpen to false.
+ *
+ *  - This is used to close the modal when clicking
+ *  on the background or pressing the `Escape` key.
+ *
+ *
+ * @property {String} [overlayClassName=""] Allows to
+ * customize the style of the background of the
+ * modal.
+ *
+ * - You can name your class whatever you want as
+ * long as you don't use the package namespace:
+ * `.react-modal-component*`.
+ */
+
+/**
+ * Displays a modal whose content is displayed with
+ * the `children` prop when the `isOpen` prop
+ * is true.
+ *
+ * @param {ModalProps} ModalProps
+ *
+ * @returns {JSX.Element} The modal component
+ *
+ * @example
+ *
+ * // YourStylizedModal.jsx
+ *
+ * import { Modal } from "react-modal-component"
+ * ... // other import statements
+ * import "./YourStylisedModal.style.css"
+ *
+ * const YourStylizedModal = ({ isOpen, handleClose }) => {
+ *   return (
+ *     &lt;Modal
+ *       isOpen={isOpen}
+ *       onClose={handleClose}
+ *       overlayClassName="success-modal"
+ *     >
+ *       &lt;div
+ *         className="success-modal__content"
+ *       >
+ *         &lt;p>Employee created!&lt;/p>
+ *
+ *         &lt;button
+ *           autoFocus
+ *           onClick={handleClose}
+ *           className="button"
+ *         >
+ *           Close
+ *         &lt;/button>
+ *       &lt;/div>
+ *     &lt;/Modal>
+ *   )
+ * }
+ *
+ * // Landing.jsx
+ *
+ * import { useState, useRef } from "react"
+ * import { YourStylizedModal } from "./path/to/your/component/folder"
+ * ... // other import statements
+ *
+ * const Landing = () => {
+ *   const [isOpen, setIsOpen] = useState(false)
+ *
+ *   // Allows you to give focus to the last element to have it
+ *   // before the modal opened.
+ *   const openButtonRef = useRef(null)
+ *
+ *   const handleClose = () => {
+ *     setIsOpen(false)
+ *
+ *     openButtonRef.current.focus()
+ *   }
+ *
+ *   return (
+ *     &lt;>
+ *       &lt;header>
+ *         &lt;h1>Example modal&lt;/h1>
+ *       &lt;/header>
+ *
+ *       &lt;main>
+ *         &lt;button
+ *           ref={openButtonRef}
+ *           onClick={() => setIsOpen(true)}
+ *           className="button success-button"
+ *         >
+ *           Open success modal
+ *         &lt;/button>
+ *       &lt;/main>
+ *
+ *       &lt;YourStylizedModal
+ *         isOpen={isOpen}
+ *         handleClose={handleClose}
+ *       />
+ *     &lt;/>
+ *   )
+ * }
+ */
+const Modal = ({
+  isOpen,
+  children,
+  onClose,
+  overlayClassName,
+}) => {
+  const handleClose = (event) => {
+    document.body.classList.remove("disable-scroll")
+
+    if (event.type === "keyup") {
+      if (event.key === "Escape") {
+        onClose()
+      }
+    } else {
+      onClose()
+    }
+  }
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add("disable-scroll")
+    }
+  }, [isOpen])
+
+  return (
+    &lt;div
+      className={`react-modal-component${
+        isOpen
+          ? ""
+          : " react-modal-component--close"
+      }`}
+      onKeyUp={handleClose}
+      onClick={handleClose}
+    >
+      {isOpen &amp;&amp; (
+        &lt;div
+          className={`react-modal-component__overlay${
+            overlayClassName
+              ? ` ${overlayClassName}`
+              : ""
+          }`}
+        >
+          {children}
+        &lt;/div>
+      )}
+    &lt;/div>
+  )
+}
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  overlayClassName: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  onClose: PropTypes.func.isRequired,
+}
+
+Modal.defaultProps = {
+  overlayClassName: "",
+}
+
+export { Modal }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

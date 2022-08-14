@@ -1,4 +1,5 @@
 import { useEffect } from "react"
+import PropTypes from "prop-types"
 import "./Modal.style.css"
 
 /**
@@ -13,15 +14,6 @@ import "./Modal.style.css"
  *
  * @property {Boolean} isOpen
  *
- * @property {String} overlayClassName Allows to
- * customize the style of the background of the
- * modal.
- *
- * - You can name your class whatever you want as
- * long as you don't use the package namespace:
- * `.react-modal-component*`.
- *
- *
  * @property {ReactNode} children Represents the
  * content of the modal.
  *
@@ -30,6 +22,15 @@ import "./Modal.style.css"
  *
  *  - This is used to close the modal when clicking
  *  on the background or pressing the `Escape` key.
+ *
+ *
+ * @property {String} [overlayClassName=""] Allows to
+ * customize the style of the background of the
+ * modal.
+ *
+ * - You can name your class whatever you want as
+ * long as you don't use the package namespace:
+ * `.react-modal-component*`.
  */
 
 /**
@@ -47,6 +48,7 @@ import "./Modal.style.css"
  *
  * import { Modal } from "react-modal-component"
  * ... // other import statements
+ * import "./YourStylisedModal.style.css"
  *
  * const YourStylizedModal = ({ isOpen, handleClose }) => {
  *   return (
@@ -72,13 +74,13 @@ import "./Modal.style.css"
  *   )
  * }
  *
- * // App.jsx
+ * // Landing.jsx
  *
  * import { useState, useRef } from "react"
  * import { YourStylizedModal } from "./path/to/your/component/folder"
  * ... // other import statements
  *
- * const App = () => {
+ * const Landing = () => {
  *   const [isOpen, setIsOpen] = useState(false)
  *
  *   // Allows you to give focus to the last element to have it
@@ -107,9 +109,9 @@ import "./Modal.style.css"
  *         </button>
  *       </main>
  *
- *       <SuccessModal
+ *       <YourStylizedModal
  *         isOpen={isOpen}
- *         handleClose={() => setIsOpen(false)}
+ *         handleClose={handleClose}
  *       />
  *     </>
  *   )
@@ -117,9 +119,9 @@ import "./Modal.style.css"
  */
 const Modal = ({
   isOpen,
-  overlayClassName,
   children,
   onClose,
+  overlayClassName,
 }) => {
   const handleClose = (event) => {
     document.body.classList.remove("disable-scroll")
@@ -162,6 +164,17 @@ const Modal = ({
       )}
     </div>
   )
+}
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  overlayClassName: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  onClose: PropTypes.func.isRequired,
+}
+
+Modal.defaultProps = {
+  overlayClassName: "",
 }
 
 export { Modal }
