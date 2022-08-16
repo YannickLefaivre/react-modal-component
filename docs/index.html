@@ -103,7 +103,7 @@
         <article><h1>React Modal Component</h1>
 <p>React Modal Component is a fully customizable modal.</p>
 <blockquote>
-<p>I followed the tutorial <a href="https://hackernoon.com/creating-a-library-of-react-components-using-create-react-app-without-ejecting-d182df690c6b">&quot;Creating a library of React components using Create React App&quot;</a> in order to create this package.</p>
+<p>I followed this two tutorials: <a href="https://hackernoon.com/creating-a-library-of-react-components-using-create-react-app-without-ejecting-d182df690c6b">&quot;Creating a library of React components using Create React App&quot;</a> and <a href="https://levelup.gitconnected.com/publish-react-components-as-an-npm-package-7a671a2fb7f">&quot;Publish React components as an npm package&quot;</a> in order to start the creation of this package.</p>
 </blockquote>
 <h2>1. Installation</h2>
 <h3>1.1 prerequisites</h3>
@@ -112,7 +112,7 @@
 <p>Then uninstall your current version of react and react-dom with the command <code>npm uninstall react react-dom.</code></p>
 <p>Then, reinstall all your packages with the command <code>npm install</code> and install react 17 with the command <code>npm install react@17.0.2 react-dom@17.0.2</code></p>
 <blockquote>
-<p>After downgrading your project, you may encounter problems with other packages, such as @testing-library/react. You can check for yourself which version of testing-library/react supports react 17 or simply install @testing-library/react@11.1.0 after uninstalling its currently installed version.</p>
+<p>After downgrading your project, you may encounter problems with other packages, such as @testing-library/react. To repairs this you can install @testing-library/react@11.1.0, which supports the lastest version of react 17, after uninstalling its currently installed version.</p>
 </blockquote>
 <h3>1.2 To start using the package</h3>
 <pre class="prettyprint source"><code>npm install @signed-a/react-modal-component
@@ -121,7 +121,7 @@
 <h3>2.1 Basic</h3>
 <p>There are two ways to use the Modal component:</p>
 <ul>
-<li>One is to simply use it as is, while assigning it your own design with the overlay customization class and the addition of child elements.</li>
+<li>One is to simply use it as-is, while assigning it your own design with the overlay customization class and the addition of child elements.</li>
 </ul>
 <pre class="prettyprint source"><code>// routes/Landing.jsx
 
@@ -133,7 +133,7 @@ import { Modal } from &quot;@signed-a/react-modal-component/dist&quot;
 import &quot;@signed-a/react-modal-component/dist/style.css&quot;
 
 ... // other import statements
-import &quot;./SpecificModalType.style.css&quot;
+import &quot;./Landing.style.css&quot;
 
 const Landing = () => {
     const [isOpen, setIsOpen] = useState(false)
@@ -213,7 +213,7 @@ const SpecificModalType = ({ isOpen, handleClose }) => {
 // routes/Landing.jsx
 
 import { useState } from &quot;react&quot;
-import { SpecificModalType } from &quot;./path/to/your/component/folder&quot;
+import { SpecificModalType } from &quot;./path/to/your/component/library/folder&quot;
 ... // other import statements
 
 const Landing = () => {
@@ -243,8 +243,10 @@ const Landing = () => {
 }
 </code></pre>
 <h3>2.2 Advanced</h3>
-<p>To put the focus back on the last item that was active before the modal was opened. Use the useRef hook to retrieve the reference of this element and use its current property to give it focus when closing the modal:</p>
+<p><strong>To put the focus back on the last item that was active before the modal was opened.</strong> Use the useRef hook to retrieve the reference of this element and use its current property to give it focus when closing the modal:</p>
 <pre class="prettyprint source"><code>// routes/Landing.jsx
+
+... // import statements
 
 const Landing = () => {
     const [isOpen, setIsOpen] = useState(false)
