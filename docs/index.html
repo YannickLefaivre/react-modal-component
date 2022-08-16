@@ -114,8 +114,8 @@
 <blockquote>
 <p>After downgrading your project, you may encounter problems with other packages, such as @testing-library/react. You can check for yourself which version of testing-library/react supports react 17 or simply install @testing-library/react@11.1.0 after uninstalling its currently installed version.</p>
 </blockquote>
-<h3>1.2 To start using it</h3>
-<pre class="prettyprint source"><code>npm install @yl/react-modal-component
+<h3>1.2 To start using the package</h3>
+<pre class="prettyprint source"><code>npm install @signed-a/react-modal-component
 </code></pre>
 <h2>2. Usage</h2>
 <h3>2.1 Basic</h3>
@@ -126,7 +126,12 @@
 <pre class="prettyprint source"><code>// routes/Landing.jsx
 
 import { useState } from &quot;react&quot;
-import { Modal } from &quot;react-modal-component&quot;
+import { Modal } from &quot;@signed-a/react-modal-component/dist&quot;
+
+// don't forget to add the style that participates
+// in the logic of opening and closing the modal.
+import &quot;@signed-a/react-modal-component/dist/style.css&quot;
+
 ... // other import statements
 import &quot;./SpecificModalType.style.css&quot;
 
@@ -176,7 +181,8 @@ const Landing = () => {
 </ul>
 <pre class="prettyprint source"><code>// component-library/SpecificModalType.jsx
 
-import { Modal } from &quot;react-modal-component&quot;
+import { Modal } from &quot;@signed-a/react-modal-component/dist&quot;
+import &quot;@signed-a/react-modal-component/dist/style.css&quot;
 ... // other import statements
 import &quot;./SpecificModalType.style.css&quot;
 
@@ -274,7 +280,7 @@ const Landing = () => {
     )
 }
 </code></pre>
-<h1>3. Documentation</h1>
+<h2>2. Consult the documentation</h2>
 <p>Documentation of the code can be found in the docs folder. By opening the <a href="https://yannicklefaivre.github.io/react-modal-component/">project github page</a>, you will have access to this file <em>(README.md)</em> as well as to the documentation of the modal component.</p></article>
     </section>
 

@@ -2,7 +2,7 @@
   "name": "@signed-a/react-modal-component",
   "description": "Modal component constructed to be design independent.",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "dist/umd/index.js",
   "module": "dist/index.js",
   "files": [
     "dist",
@@ -12,10 +12,7 @@
     "type": "git",
     "url": "https://github.com/YannickLefaivre/react-modal-component"
   },
-  "author": {
-    "name": "Yannick Lefaivre",
-    "url": "https://github.com/YannickLefaivre"
-  },
+  "author": "Yannick Lefaivre",
   "keywords": [
     "react",
     "modal",
@@ -29,24 +26,29 @@
     "@babel/cli": "^7.18.10",
     "@babel/core": "^7.18.10",
     "@babel/preset-env": "^7.18.10",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^22.0.2",
+    "@rollup/plugin-node-resolve": "^13.3.0",
     "better-docs": "^2.7.2",
     "cross-env": "^7.0.3",
     "jsdoc": "^3.6.11",
     "prettier": "^2.7.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "^5.0.0"
+    "react-scripts": "^5.0.0",
+    "rollup": "^2.78.0",
+    "rollup-plugin-import-css": "^3.0.3"
   },
   "peerDependencies": {
-    "react": ">= 17.0.2",
-    "react-dom": ">= 17.0.2"
+    "react": ">=17",
+    "react-dom": ">=17"
   },
   "scripts": {
     "start": "react-scripts start",
     "test": "react-scripts test",
     "build-examples": "react-scripts build",
-    "build": "rm -rf dist && cross-env NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
-    "generate-docs": "jsdoc src/lib -c jsdoc.config.json -R README.md",
+    "build": "rm -rf dist && cross-env NODE_ENV=production rollup -c",
+    "generate-docs": "rm -rf docs && jsdoc src/lib -c jsdoc.config.json -R README.md",
     "eject": "react-scripts eject"
   },
   "browserslist": {
