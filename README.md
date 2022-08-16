@@ -36,7 +36,12 @@ There are two ways to use the Modal component:
 // routes/Landing.jsx
 
 import { useState } from "react"
-import { Modal } from "react-modal-component"
+import { Modal } from "@signed-a/react-modal-component/dist"
+
+// don't forget to add the style that participates
+// in the logic of opening and closing the modal.
+import "@signed-a/react-modal-component/dist/style.css"
+
 ... // other import statements
 import "./SpecificModalType.style.css"
 
@@ -87,7 +92,8 @@ const Landing = () => {
 ```
 // component-library/SpecificModalType.jsx
 
-import { Modal } from "react-modal-component"
+import { Modal } from "@signed-a/react-modal-component/dist"
+import "@signed-a/react-modal-component/dist/style.css"
 ... // other import statements
 import "./SpecificModalType.style.css"
 
