@@ -18,10 +18,10 @@ Then, reinstall all your packages with the command `npm install` and install rea
 
 > After downgrading your project, you may encounter problems with other packages, such as @testing-library/react. You can check for yourself which version of testing-library/react supports react 17 or simply install @testing-library/react@11.1.0 after uninstalling its currently installed version.
 
-### 1.2 To start using it
+### 1.2 To start using the package
 
 ```
-npm install @yl/react-modal-component
+npm install @signed-a/react-modal-component
 ```
 
 ## 2. Usage
