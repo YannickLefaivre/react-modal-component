@@ -12,10 +12,7 @@
     "type": "git",
     "url": "https://github.com/YannickLefaivre/react-modal-component"
   },
-  "author": {
-    "name": "Yannick Lefaivre",
-    "url": "https://github.com/YannickLefaivre"
-  },
+  "author": "Yannick Lefaivre",
   "keywords": [
     "react",
     "modal",

@@ -46,7 +46,12 @@ import "./Modal.style.css"
  *
  * // YourStylizedModal.jsx
  *
- * import { Modal } from "react-modal-component"
+ * import { Modal } from "@signed-a/react-modal-component/dist"
+ *
+ * // don't forget to add the style that participates
+ * // in the logic of opening and closing the modal.
+ * import "@signed-a/react-modal-component/dist/style.css"
+ *
  * ... // other import statements
  * import "./YourStylisedModal.style.css"
  *
