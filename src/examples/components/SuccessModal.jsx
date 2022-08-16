@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import { Modal } from "../../lib"
 import "./SuccessModal.style.css"
 
@@ -15,7 +16,6 @@ import "./SuccessModal.style.css"
  */
 
 /**
- *
  * @param {SuccessModalProps} SuccessModalProps
  *
  * @returns {JSX.Element}
@@ -40,6 +40,11 @@ const SuccessModal = ({ isOpen, handleClose }) => {
       </div>
     </Modal>
   )
+}
+
+SuccessModal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  handleClose: PropTypes.func.isRequired,
 }
 
 export { SuccessModal }
