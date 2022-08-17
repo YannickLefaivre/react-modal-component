@@ -1,17 +1,17 @@
 import commonjs from "@rollup/plugin-commonjs"
-import resolve from "@rollup/plugin-node-resolve"
+import { nodeResolve } from "@rollup/plugin-node-resolve"
 import babel from "@rollup/plugin-babel"
 import css from "rollup-plugin-import-css"
 
-const basePlugins = [
+const globalePlugins = [
+  commonjs({ include: /node_modules/ }),
   babel({ babelHelpers: "bundled" }),
-  commonjs(),
-  css({
-    output: "../styles/style.css",
-  }),
-  resolve({
+  nodeResolve({
     moduleDirectories: "node_modules",
-    extensions: ["js", "jsx", "ts", "tsx"],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
+  }),
+  css({
+    output: "style.css",
   }),
 ]
 
@@ -38,7 +38,7 @@ const config = {
     },
   ],
   external: ["react", "prop-types"],
-  plugins: basePlugins,
+  plugins: globalePlugins,
 }
 
 export default config
