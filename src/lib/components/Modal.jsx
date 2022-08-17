@@ -129,14 +129,24 @@ const Modal = ({
   overlayClassName,
 }) => {
   const handleClose = (event) => {
-    document.body.classList.remove("disable-scroll")
-
     if (event.type === "keyup") {
       if (event.key === "Escape") {
         onClose()
+        document.body.classList.remove(
+          "disable-scroll"
+        )
       }
     } else {
-      onClose()
+      const overlay = document.querySelector(
+        ".react-modal-component__overlay"
+      )
+
+      if (event.target === overlay) {
+        onClose()
+        document.body.classList.remove(
+          "disable-scroll"
+        )
+      }
     }
   }
 
