@@ -1,16 +1,12 @@
-import { useRef, useState } from "react"
+import {
+  MODAL_OPENING_STATE,
+  useModal,
+} from "../../../lib"
 import { SuccessModal } from "../../components/SuccessModal"
 import "./Landing.style.css"
 
 const Landing = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const openButtonRef = useRef(null)
-
-  const handleClose = () => {
-    setIsOpen(false)
-
-    openButtonRef.current.focus()
-  }
+  const modal = useModal(MODAL_OPENING_STATE.CLOSED)
 
   return (
     <>
@@ -28,8 +24,8 @@ const Landing = () => {
         </p>
 
         <button
-          ref={openButtonRef}
-          onClick={() => setIsOpen(true)}
+          ref={modal.openButtonRef}
+          onClick={modal.open}
           className="button success-button"
         >
           Open success modal v2
@@ -37,8 +33,9 @@ const Landing = () => {
       </main>
 
       <SuccessModal
-        isOpen={isOpen}
-        handleClose={handleClose}
+        isOpen={modal.isOpen}
+        handleClickOutside={modal.clickOutside}
+        handleClickOnCloseButton={modal.close}
       />
     </>
   )

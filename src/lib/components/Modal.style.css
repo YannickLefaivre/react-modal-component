@@ -8,25 +8,231 @@
   left: 0;
   width: 100%;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
+  z-index: 99;
   overflow: auto;
 }
 
 .react-modal-component--close {
-  z-index: -1;
+  display: none;
+}
+
+.react-modal-component__button {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  padding: 0.7em 2em;
+  width: 8.8rem;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-modal-component__button:focus,
+.react-modal-component__button:focus-visible {
+  outline: 1px solid rgb(88, 88, 88);
+  outline-offset: 2px;
+}
+
+.react-modal-component__button:hover,
+.react-modal-component__button:active {
+  background-color: rgb(189 189 189);
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__button {
+    padding: 0.5em 1em;
+    width: 7rem;
+    font-size: 0.9rem;
+  }
 }
 
 .react-modal-component__overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: inherit;
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__overlay {
+    align-items: unset;
+  }
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__overlay {
+    height: auto;
+    background: initial;
+    display: block;
+    justify-content: unset;
+    align-items: unset;
+  }
+}
+
+.react-modal-component__content {
+  position: relative;
+  width: 35%;
+  max-width: 450px;
+  height: 70%;
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: 0.125rem solid black;
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__content {
+    width: 45%;
+    max-width: 320px;
+    height: 100%;
+    margin-block: 2rem;
+    row-gap: 2rem;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 710px) {
+  .react-modal-component__content {
+    width: 50%;
+    row-gap: 1rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__content {
+    width: auto;
+    max-width: none;
+    height: auto;
+    border: 0px none;
+    border-radius: 0px;
+    margin-block: 0px;
+  }
+}
+
+.react-modal-component__content__close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+  padding: 0.125rem;
+}
+
+.react-modal-component__content__close-button:focus
+  .react-modal-component__content__close-button__icon {
+  color: rgb(0, 0, 0);
+}
+
+.react-modal-component__content__close-button:hover
+  .react-modal-component__content__close-button__icon {
+  color: rgb(75, 75, 75);
+}
+
+.react-modal-component__content__close-button:active
+  .react-modal-component__content__close-button__icon {
+  color: rgb(43, 43, 43);
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__content__close-button {
+    right: 0.5rem;
+  }
+}
+
+.react-modal-component__content__close-button__icon {
+  height: 3.5rem;
+  width: 3.5rem;
+  color: black;
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__content__close-button__icon {
+    height: 1rem;
+    width: 1rem;
+  }
+}
+
+.react-modal-component__content__header {
+  display: flex;
+  width: 75%;
+  justify-content: center;
+  align-items: flex-start;
+  border-bottom: 2px solid black;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__content__header {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__content__header {
+    border-bottom: 0px none;
+    padding-inline: 1rem;
+  }
+}
+
+.react-modal-component__content__header__title {
+  font-size: 2.375rem;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__content__header__title {
+    font-size: 1.75rem;
+  }
+}
+
+.react-modal-component__content__main {
+  height: 70%;
+  padding-inline: 2.8rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  overflow-y: auto;
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__content__main {
+    height: auto;
+    justify-content: unset;
+  }
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__content__main {
+    height: auto;
+    margin-block: 2rem 3rem;
+    padding-inline: 1rem;
+  }
+}
+
+.react-modal-component__content__footer {
   width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  overflow: inherit;
-  z-index: 2;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 2px solid black;
+  padding-top: 1rem;
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__content__footer {
+    justify-content: space-evenly;
+    border-top: 0px none;
+    padding-inline: 1rem;
+  }
 }

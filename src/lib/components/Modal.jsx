@@ -44,152 +44,257 @@ import "./Modal.style.css"
  *
  * @example
  *
- * // YourStylizedModal.jsx
- *
- * import { Modal } from "@signed-a/react-modal-component/dist"
- *
- * // don't forget to add the style that participates
- * // in the logic of opening and closing the modal.
- * import "@signed-a/react-modal-component/dist/style.css"
- *
- * ... // other import statements
- * import "./YourStylisedModal.style.css"
- *
- * const YourStylizedModal = ({ isOpen, handleClose }) => {
- *   return (
- *     <Modal
- *       isOpen={isOpen}
- *       onClose={handleClose}
- *       overlayClassName="success-modal"
- *     >
- *       <div
- *         className="success-modal__content"
- *       >
- *         <p>Employee created!</p>
- *
- *         <button
- *           autoFocus
- *           onClick={handleClose}
- *           className="button"
- *         >
- *           Close
- *         </button>
- *       </div>
- *     </Modal>
- *   )
- * }
- *
- * // Landing.jsx
- *
- * import { useState, useRef } from "react"
- * import { YourStylizedModal } from "./path/to/your/component/folder"
- * ... // other import statements
- *
- * const Landing = () => {
- *   const [isOpen, setIsOpen] = useState(false)
- *
- *   // Allows you to give focus to the last element to have it
- *   // before the modal opened.
- *   const openButtonRef = useRef(null)
- *
- *   const handleClose = () => {
- *     setIsOpen(false)
- *
- *     openButtonRef.current.focus()
- *   }
- *
- *   return (
- *     <>
- *       <header>
- *         <h1>Example modal</h1>
- *       </header>
- *
- *       <main>
- *         <button
- *           ref={openButtonRef}
- *           onClick={() => setIsOpen(true)}
- *           className="button success-button"
- *         >
- *           Open success modal
- *         </button>
- *       </main>
- *
- *       <YourStylizedModal
- *         isOpen={isOpen}
- *         handleClose={handleClose}
- *       />
- *     </>
- *   )
- * }
  */
 const Modal = ({
   isOpen,
   children,
-  onClose,
-  overlayClassName,
+  handleClickOutside,
+  handleClickOnCloseButton,
+  handleConfirm,
+  handleCancel,
+  buttonsForm,
+  title,
+  additionalHeaderContent,
+  additionalFooterContent,
+  closeButtonIcon,
+  showTitle,
+  showCancelButton,
+  showConfirmButton,
+  cancelButtonOptions,
+  confirmButtonOptions,
+  styleModifier,
 }) => {
-  const handleClose = (event) => {
-    if (event.type === "keyup") {
-      if (event.key === "Escape") {
-        onClose()
-        document.body.classList.remove(
-          "disable-scroll"
-        )
-      }
-    } else {
-      const overlay = document.querySelector(
-        ".react-modal-component__overlay"
-      )
-
-      if (event.target === overlay) {
-        onClose()
-        document.body.classList.remove(
-          "disable-scroll"
-        )
-      }
-    }
-  }
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.classList.add("disable-scroll")
-    }
-  }, [isOpen])
-
   return (
     <div
+      id="react-modal-component-root"
       className={`react-modal-component${
         isOpen
           ? ""
           : " react-modal-component--close"
       }`}
-      onKeyUp={handleClose}
-      onClick={handleClose}
+      onClick={handleClickOutside}
     >
-      {isOpen && (
+      <div
+        id="react-modal-component-overlay"
+        className={`react-modal-component__overlay${
+          styleModifier?.overlay
+            ? ` ${styleModifier?.overlay}`
+            : ""
+        }`}
+      >
         <div
-          className={`react-modal-component__overlay${
-            overlayClassName
-              ? ` ${overlayClassName}`
+          className={`react-modal-component__content${
+            styleModifier?.contentContainer
+              ? ` ${styleModifier.contentContainer}`
               : ""
           }`}
         >
-          {children}
+          <button
+            type="button"
+            autoFocus
+            onClick={handleClickOnCloseButton}
+            className={`react-modal-component__button react-modal-component__content__close-button${
+              styleModifier?.closeButton
+                ? styleModifier?.closeButton
+                : ""
+            }`}
+          >
+            {closeButtonIcon ? (
+              closeButtonIcon
+            ) : (
+              <svg
+                width={32}
+                height={32}
+                viewBox="0 0 320 512"
+                className={`react-modal-component__content__close-button__icon${
+                  styleModifier?.closeButtonIcon
+                    ? styleModifier?.closeButtonIcon
+                    : ""
+                }`}
+              >
+                {/* <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
+                <path
+                  d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                  fill="currentColor"
+                />
+              </svg>
+            )}
+          </button>
+
+          <header
+            className={`react-modal-component__content__header${
+              styleModifier?.header
+                ? ` ${styleModifier?.header}`
+                : ""
+            }`}
+          >
+            {showTitle && (
+              <h2
+                className={`react-modal-component__content__header__title${
+                  styleModifier &&
+                  styleModifier.title
+                    ? ` ${styleModifier.title}`
+                    : ""
+                }`}
+              >
+                {title}
+              </h2>
+            )}
+
+            {additionalHeaderContent &&
+              additionalHeaderContent}
+          </header>
+
+          <main
+            className={`react-modal-component__content__main${
+              styleModifier?.mainContent
+                ? ` ${styleModifier?.mainContent}`
+                : ""
+            }`}
+          >
+            {children}
+          </main>
+
+          <footer
+            className={`react-modal-component__content__footer${
+              styleModifier?.footer
+                ? ` ${styleModifier?.footer}`
+                : ""
+            }`}
+          >
+            {additionalFooterContent &&
+              additionalFooterContent}
+
+            {showConfirmButton && (
+              <button
+                type="submit"
+                name={
+                  confirmButtonOptions?.confirmButtonName
+                    ? confirmButtonOptions?.confirmButtonName
+                    : "react-modal-component-confirm-button"
+                }
+                onClick={handleConfirm}
+                form={buttonsForm}
+                formNoValidate={
+                  confirmButtonOptions?.formNoValidate
+                }
+                formAction={
+                  confirmButtonOptions?.formAction
+                }
+                formEncType={
+                  confirmButtonOptions?.formEncType
+                }
+                formMethod={
+                  confirmButtonOptions?.formMethod
+                }
+                formTarget={
+                  confirmButtonOptions?.formTarget
+                }
+                className={`react-modal-component__button${
+                  styleModifier?.confirmButton
+                    ? ` ${styleModifier.confirmButton}`
+                    : ""
+                }`}
+              >
+                {confirmButtonOptions?.content
+                  ? confirmButtonOptions?.content
+                  : "Confirmer"}
+              </button>
+            )}
+
+            {showCancelButton && (
+              <button
+                type="reset"
+                name={
+                  cancelButtonOptions?.cancelButtonName
+                    ? cancelButtonOptions?.cancelButtonName
+                    : "react-modal-component-cancel-button"
+                }
+                onClick={handleCancel}
+                form={buttonsForm}
+                className={`react-modal-component__button${
+                  styleModifier?.cancelButton
+                    ? styleModifier?.cancelButton
+                    : ""
+                }`}
+              >
+                {cancelButtonOptions?.cancelButtonContent
+                  ? cancelButtonOptions?.cancelButtonContent
+                  : "Annuler"}
+              </button>
+            )}
+          </footer>
         </div>
-      )}
+      </div>
     </div>
   )
 }
 
 Modal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  overlayClassName: PropTypes.string,
   children: PropTypes.node.isRequired,
-  onClose: PropTypes.func.isRequired,
+  handleClickOutside: PropTypes.func.isRequired,
+  handleClickOnCloseButton:
+    PropTypes.func.isRequired,
+  handleCancel: PropTypes.func.isRequired,
+  handleConfirm: PropTypes.func.isRequired,
+  buttonsForm: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  showTitle: PropTypes.bool,
+  showCancelButton: PropTypes.bool,
+  showConfirmButton: PropTypes.bool,
+
+  cancelButtonOptions: PropTypes.exact({
+    cancelButtonName: PropTypes.string,
+    cancelButtonContent: PropTypes.node,
+  }),
+
+  confirmButtonOptions: PropTypes.exact({
+    confirmButtonName: PropTypes.string,
+    formNoValidate: PropTypes.bool,
+    formAction: PropTypes.string,
+    formEncType: PropTypes.string,
+    formMethod: PropTypes.string,
+    formTarget: PropTypes.string,
+    content: PropTypes.node,
+  }),
+
+  styleModifier: PropTypes.exact({
+    overlay: PropTypes.string,
+    header: PropTypes.string,
+    title: PropTypes.string,
+    mainContent: PropTypes.string,
+    footer: PropTypes.string,
+    cancelButton: PropTypes.string,
+    confirmButton: PropTypes.string,
+    closeButton: PropTypes.string,
+    closeButtonIcon: PropTypes.string,
+  }),
+
+  closeButtonIcon: PropTypes.node,
+  additionalFooterContent: PropTypes.node,
+  additionalHeaderContent: PropTypes.node,
 }
 
 Modal.defaultProps = {
-  overlayClassName: "",
+  handleCancel: () => {},
+  handleConfirm: () => {},
+  buttonsForm: "",
+  title: "Modal title",
+  showTitle: true,
+  showCancelButton: true,
+  showConfirmButton: true,
+  styleModifier: {
+    overlay: "",
+    header: "",
+    title: "",
+    mainContent: "",
+    footer: "",
+    confirmButton: "",
+    cancelButton: "",
+    closeButton: "",
+    closeButtonIcon: "",
+  },
 }
 
 export { Modal }

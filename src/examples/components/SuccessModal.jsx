@@ -20,31 +20,101 @@ import "./SuccessModal.style.css"
  *
  * @returns {JSX.Element}
  */
-const SuccessModal = ({ isOpen, handleClose }) => {
+const SuccessModal = ({
+  isOpen,
+  handleClickOutside,
+  handleClickOnCloseButton,
+}) => {
   return (
     <Modal
       isOpen={isOpen}
-      onClose={handleClose}
-      overlayClassName="success-modal"
+      handleClickOutside={handleClickOutside}
+      handleClickOnCloseButton={
+        handleClickOnCloseButton
+      }
+      buttonsForm="signup-form"
+      styleModifier={{ overlay: "signup-modal" }}
     >
-      <div className="success-modal__content">
-        <p>Employee created!</p>
+      <p className="signup-modal__description">
+        Lorem ipsum dolor sit amet, consectetur
+        adipiscing elit. Morbi aliquam purus magna,
+        et vulputate dolor hendrerit sed. Phasellus
+        posuere ante vitae risus mollis, id gravida
+        libero finibus.
+      </p>
 
-        <button
-          autoFocus
-          onClick={handleClose}
-          className="button"
-        >
-          Close
-        </button>
-      </div>
+      <form
+        id="signup-form"
+        action="#"
+        className="signup-form"
+      >
+        <fieldset>
+          <legend className="signup-form__fieldset__legend">
+            Identity
+          </legend>
+
+          <div className="signup-form__fieldset__field">
+            <label htmlFor="first-name">
+              First name:
+            </label>
+
+            <input
+              type="text"
+              name="first-name"
+              id="first-name"
+            />
+          </div>
+
+          <div className="signup-form__fieldset__field">
+            <label htmlFor="last-name">
+              Last name:
+            </label>
+
+            <input
+              type="text"
+              name="last-name"
+              id="last-name"
+            />
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend className="signup-form__fieldset__legend">
+            Credentials
+          </legend>
+
+          <div className="signup-form__fieldset__field">
+            <label htmlFor="email">Email:</label>
+
+            <input
+              type="text"
+              name="email"
+              id="email"
+            />
+          </div>
+
+          <div className="signup-form__fieldset__field">
+            <label htmlFor="password">
+              Password:
+            </label>
+
+            <input
+              type="text"
+              name="password"
+              id="password"
+            />
+          </div>
+        </fieldset>
+      </form>
     </Modal>
   )
 }
 
 SuccessModal.propTypes = {
   isOpen: PropTypes.bool.isRequired,
-  handleClose: PropTypes.func.isRequired,
+  handleClickOutside: PropTypes.func.isRequired,
+  handleClickOnCloseButton:
+    PropTypes.func.isRequired,
 }
 
 export { SuccessModal }
