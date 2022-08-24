@@ -1,4 +1,91 @@
-import React from "react"
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> components/Modal.jsx</title>
+
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="./build/entry.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,400,700|Inconsolata,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  <link type="text/css" rel="stylesheet" href="https://jmblog.github.io/color-themes-for-google-code-prettify/themes/tomorrow-night.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/app.min.css">
+  <link type="text/css" rel="stylesheet" href="styles/iframe.css">
+  <link type="text/css" rel="stylesheet" href="">
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+
+  
+</head>
+
+
+
+<body class="layout small-header">
+    <div id="stickyNavbarOverlay"></div>
+    
+
+<div class="top-nav">
+    <div class="inner">
+        <a id="hamburger" role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+        <div class="logo">
+            
+            
+        </div>
+        <div class="menu">
+            
+            <div class="navigation">
+                <a
+                    href="index.html"
+                    class="link"
+                >
+                    Documentation
+                </a>
+                
+                
+                
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="main">
+        <div
+            class="sidebar "
+            id="sidebarNav"
+        >
+            
+            <nav>
+                
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-useModal.html">useModal</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Modal">Modal</a></li></ul></div>
+                
+            </nav>
+        </div>
+        <div class="core" id="main-content-wrapper">
+            <div class="content">
+                <header class="page-title">
+                    <p>Source</p>
+                    <h1>components/Modal.jsx</h1>
+                </header>
+                
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from "react"
 import PropTypes from "prop-types"
 import "./Modal.css"
 
@@ -11,22 +98,22 @@ import "./Modal.css"
  * @typedef {Object} ConfirmButtonOptions
  *
  * @property {String} name
- * [See the MDN reference of the \<button\> element `name` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-name}
+ * [See the MDN reference of the \&lt;button\> element `name` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-name}
  *
  * @property {Boolean} formNoValidate
- * [See the MDN reference of the \<button\> element `formNoValidate` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formnovalidate}
+ * [See the MDN reference of the \&lt;button\> element `formNoValidate` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formnovalidate}
  *
  * @property {String} formAction
- * [See the MDN reference of the \<button\> element `formAction` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction}
+ * [See the MDN reference of the \&lt;button\> element `formAction` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction}
  *
  * @property {String} formEncType
- * [See the MDN reference of the  \<button\> element `formEncType` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formenctype}
+ * [See the MDN reference of the  \&lt;button\> element `formEncType` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formenctype}
  *
  * @property {String} formMethod
- * [See the MDN reference of the  \<button\> element `formMethod` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formmethod}
+ * [See the MDN reference of the  \&lt;button\> element `formMethod` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formmethod}
  *
  * @property {String} formTarget
- * [See the MDN reference of the \<button\> element `formTarget` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formtarget}
+ * [See the MDN reference of the \&lt;button\> element `formTarget` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formtarget}
  *
  * @property {String | React.ReactNode} content
  * Allows you to replace the default button text
@@ -86,7 +173,7 @@ import "./Modal.css"
  * @property {Function} [handleCancel=() => {}]
  *
  * @property {String} [buttonsForm=""]
- * [See the MDN reference of the \<button\> element `form` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-form}
+ * [See the MDN reference of the \&lt;button\> element `form` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-form}
  *
  * @property {String} [title="Modal title"]
  *
@@ -137,7 +224,7 @@ import "./Modal.css"
  *  handleClickOnCloseButton,
  * }) => {
  *  return (
- *    <Modal
+ *    &lt;Modal
  *      isOpen={isOpen}
  *      handleClickOutside={handleClickOutside}
  *      handleClickOnCloseButton={
@@ -145,12 +232,12 @@ import "./Modal.css"
  *      }
  *      buttonsForm="signup-form"
  *      headerContent={
- *        <>
- *          <h2 className="signup-modal__header__title">Inscription</h2>
- *          <p className="signup-modal__header__subtitle">
+ *        &lt;>
+ *          &lt;h2 className="signup-modal__header__title">Inscription&lt;/h2>
+ *          &lt;p className="signup-modal__header__subtitle">
  *            Création d'un compte utilisateur
- *          </p>
- *        </>
+ *          &lt;/p>
+ *        &lt;/>
  *      }
  *      hideCancelButton
  *      confirmButtonOptions={{
@@ -163,70 +250,70 @@ import "./Modal.css"
  *        confirmButton: "signup-modal__footer__confirm-button",
  *      }}
  *    >
- *      <form
+ *      &lt;form
  *        id="signup-form"
  *        action="#"
  *        className="signup-form"
  *      >
- *        <fieldset>
- *          <legend className="signup-form__fieldset__legend">
+ *        &lt;fieldset>
+ *          &lt;legend className="signup-form__fieldset__legend">
  *            Identity
- *          </legend>
+ *          &lt;/legend>
  *
- *          <div className="signup-form__fieldset__field">
- *            <label htmlFor="first-name">
+ *          &lt;div className="signup-form__fieldset__field">
+ *            &lt;label htmlFor="first-name">
  *              First name:
- *            </label>
+ *            &lt;/label>
  *
- *            <input
+ *            &lt;input
  *              type="text"
  *              name="first-name"
  *              id="first-name"
  *            />
- *          </div>
+ *          &lt;/div>
  *
- *          <div className="signup-form__fieldset__field">
- *            <label htmlFor="last-name">
+ *          &lt;div className="signup-form__fieldset__field">
+ *            &lt;label htmlFor="last-name">
  *              Last name:
- *            </label>
+ *            &lt;/label>
  *
- *            <input
+ *            &lt;input
  *              type="text"
  *              name="last-name"
  *              id="last-name"
  *            />
- *          </div>
- *        </fieldset>
+ *          &lt;/div>
+ *        &lt;/fieldset>
  *
- *        <fieldset>
- *          <legend className="signup-form__fieldset__legend">
+ *        &lt;fieldset>
+ *          &lt;legend className="signup-form__fieldset__legend">
  *            Credentials
- *          </legend>
+ *          &lt;/legend>
  *
- *          <div className="signup-form__fieldset__field">
- *            <label htmlFor="email">Email:</label>
+ *          &lt;div className="signup-form__fieldset__field">
+ *            &lt;label htmlFor="email">Email:&lt;/label>
  *
- *            <input
+ *            &lt;input
  *              type="text"
  *              name="email"
  *              id="email"
  *            />
- *          </div>
+ *          &lt;/div>
  *
- *          <div className="signup-form__fieldset__field">
- *            <label htmlFor="password">
+ *          &lt;div className="signup-form__fieldset__field">
+ *            &lt;label htmlFor="password">
  *              Password:
- *            </label>
+ *            &lt;/label>
  *
- *            <input
+ *            &lt;input
  *              type="text"
  *              name="password"
  *              id="password"
  *            />
- *          </div>
- *        </fieldset>
- *      </form>
- *    </Modal>
+ *          &lt;/div>
+ *        &lt;/fieldset>
+ *      &lt;/form>
+ *    &lt;/Modal>
  *  )
  * }
  */
@@ -251,14 +338,14 @@ const Modal = ({
   cancelButtonContent,
 }) => {
   return (
-    <div
+    &lt;div
       id="react-modal-component-root"
       className={`react-modal-component${
         isOpen ? "" : " react-modal-component--close"
       }`}
       onClick={handleClickOutside}
     >
-      <div
+      &lt;div
         id="react-modal-component-backdrop"
         className={`react-modal-component__backdrop${
           styleModifier?.backdrop ? ` ${styleModifier?.backdrop}` : ""
@@ -268,14 +355,14 @@ const Modal = ({
             : ""
         }`}
       >
-        <div
+        &lt;div
           className={`react-modal-component__content${
             styleModifier?.contentContainer
               ? ` ${styleModifier.contentContainer}`
               : ""
           }`}
         >
-          <button
+          &lt;button
             type="reset"
             autoFocus
             form={buttonsForm}
@@ -293,7 +380,7 @@ const Modal = ({
             {closeButtonIcon ? (
               closeButtonIcon
             ) : (
-              <svg
+              &lt;svg
                 width={32}
                 height={32}
                 viewBox="0 0 320 512"
@@ -303,36 +390,36 @@ const Modal = ({
                     : ""
                 }`}
               >
-                {/* <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
-                <path
+                {/* &lt;!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
+                &lt;path
                   d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
                   fill="currentColor"
                 />
-              </svg>
+              &lt;/svg>
             )}
-          </button>
+          &lt;/button>
 
-          <header
+          &lt;header
             className={`react-modal-component__content__header${
               styleModifier?.header ? ` ${styleModifier?.header}` : ""
             }`}
           >
             {headerContent
               ? headerContent
-              : !hideTitle && (
-                  <h2
+              : !hideTitle &amp;&amp; (
+                  &lt;h2
                     className={`react-modal-component__content__header__title${
-                      styleModifier && styleModifier.title
+                      styleModifier &amp;&amp; styleModifier.title
                         ? ` ${styleModifier.title}`
                         : ""
                     }`}
                   >
                     {title}
-                  </h2>
+                  &lt;/h2>
                 )}
-          </header>
+          &lt;/header>
 
-          <main
+          &lt;main
             className={`react-modal-component__content__main${
               styleModifier?.mainContent
                 ? ` ${styleModifier?.mainContent}`
@@ -340,9 +427,9 @@ const Modal = ({
             }`}
           >
             {children}
-          </main>
+          &lt;/main>
 
-          <footer
+          &lt;footer
             className={`react-modal-component__content__footer${
               styleModifier?.footer ? ` ${styleModifier?.footer}` : ""
             }`}
@@ -350,9 +437,9 @@ const Modal = ({
             {footerContent ? (
               footerContent
             ) : (
-              <>
-                {!hideConfirmButton && (
-                  <button
+              &lt;>
+                {!hideConfirmButton &amp;&amp; (
+                  &lt;button
                     type="submit"
                     name={
                       confirmButtonOptions?.name
@@ -377,11 +464,11 @@ const Modal = ({
                     {confirmButtonOptions?.content
                       ? confirmButtonOptions?.content
                       : "Confirmer"}
-                  </button>
+                  &lt;/button>
                 )}
 
-                {!hideCancelButton && (
-                  <button
+                {!hideCancelButton &amp;&amp; (
+                  &lt;button
                     type="reset"
                     onClick={handleCancel}
                     form={buttonsForm}
@@ -394,14 +481,14 @@ const Modal = ({
                     {cancelButtonContent
                       ? cancelButtonContent
                       : "Annuler"}
-                  </button>
+                  &lt;/button>
                 )}
-              </>
+              &lt;/>
             )}
-          </footer>
-        </div>
-      </div>
-    </div>
+          &lt;/footer>
+        &lt;/div>
+      &lt;/div>
+    &lt;/div>
   )
 }
 
@@ -461,3 +548,33 @@ Modal.defaultProps = {
 }
 
 export { Modal }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+            </div>
+            
+            <footer class="footer">
+                <div class="content has-text-centered">
+                    <p>Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.11</a></p>
+                    <p class="sidebar-created-by">
+                        <a href="https://github.com/SoftwareBrothers/better-docs" target="_blank">BetterDocs theme</a> provided with <i class="fas fa-heart"></i> by
+                        <a href="http://softwarebrothers.co" target="_blank">SoftwareBrothers - JavaScript Development Agency</a>
+                    </p>
+                </div>
+            </footer>
+            
+        </div>
+        <div id="side-nav" class="side-nav">
+        </div>
+    </div>
+<script src="scripts/app.min.js"></script>
+<script>PR.prettyPrint();</script>
+<script src="scripts/linenumber.js"> </script>
+
+
+</body>
+</html>

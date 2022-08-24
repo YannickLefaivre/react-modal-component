@@ -6,8 +6,8 @@
 
 .success-button {
   color: white;
-  background-color: rgb(50, 150, 50);
-  border: rgb(20, 90, 20);
+  background-color: rgb(177, 29, 29);
+  border: 1px solid rgb(99, 16, 16);
   padding: 8px;
   border-radius: 5px;
 }

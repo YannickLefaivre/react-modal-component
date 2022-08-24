@@ -6,19 +6,7 @@ React Modal Component is a fully customizable modal.
 
 ## 1. Installation
 
-### 1.1 prerequisites
-
-**You will need at least react@17.0.2 to use this package.**
-
-If you have a higher version, you will need to downgrade your project. To do this, you must delete your _package-lock.json_ file and your _node_modules_ directory.
-
-Then uninstall your current version of react and react-dom with the command `npm uninstall react react-dom.`
-
-Then, reinstall all your packages with the command `npm install` and install react 17 with the command `npm install react@17.0.2 react-dom@17.0.2`
-
-> After downgrading your project, you may encounter problems with other packages, such as @testing-library/react. To repairs this you can install @testing-library/react@11.1.0, which supports the lastest version of react 17, after uninstalling its currently installed version.
-
-### 1.2 To start using the package
+> **Note: You will need at least react 17 to use this package.**
 
 ```
 npm install @signed-a/react-modal-component
@@ -30,33 +18,42 @@ npm install @signed-a/react-modal-component
 
 There are two ways to use the Modal component:
 
-- One is to simply use it as-is, while assigning it your own design with the overlay customization class and the addition of child elements.
+- The first is to include it directly at the same level of the component tree as the button that opens it and to use its props to customize its appearance.
 
 ```
 // routes/Landing.jsx
 
-import { useState } from "react"
-import { Modal } from "@signed-a/react-modal-component/dist"
+import {
+    Modal,
+    useModal,
+    MODAL_OPEN_STATE,
+} from "@signed-a/react-modal-component/dist"
 
-// don't forget to add the style that participates
-// in the logic of opening and closing the modal.
+// don't forget to add the style that participates in the logic of
+// opening and closing the modal.
+//
+// NEW ! Now the modal has a default style.
 import "@signed-a/react-modal-component/dist/style.css"
 
 ... // other import statements
 import "./Landing.style.css"
 
 const Landing = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const modal = useModal(MODAL_OPEN_STATE.CLOSED)
 
     return (
         <>
-            <header>
-                <h1>Example modal</h1>
-            </header>
+            ...
 
             <main>
+                ...
+
                 <button
-                    onClick={() => setIsOpen(true)}
+                    // retrieve the reference of the open button in
+                    // order to give it focus when closing the modal
+                    ref={modal.openButtonRef}
+
+                    onClick={modal.open}
                     className="button success-button"
                 >
                     Open success modal
@@ -64,23 +61,20 @@ const Landing = () => {
             </main>
 
             <Modal
-                isOpen={isOpen}
-                onClose={() => setIsOpen(false)}
-                overlayClassName="success-modal"
+                isOpen={modal.isOpen}
+                handleClickOnCloseButton={modal.close}
+                handleClickOutside={modal.clickOutside}
+                hideTitle
+                hideCancelButton
+                hideConfirmButton
+                styleModifier={{
+                    header: "success-modal__content__header",
+                    mainContent: "success-modal__content_main",
+                    footer: "success-modal__content__footer",
+                }}
             >
-                <div
-                    className="success-modal__content"
-                >
-                    <p>Employee created!</p>
 
-                    <button
-                        autoFocus
-                        onClick={() => setIsOpen(false)}
-                        className="button"
-                    >
-                        Close
-                    </button>
-                </div>
+                <p className="success-modal__content__main__success-text">Employee created!</p>
             </Modal>
         </>
     )
@@ -97,48 +91,53 @@ import "@signed-a/react-modal-component/dist/style.css"
 ... // other import statements
 import "./SpecificModalType.style.css"
 
-const SpecificModalType = ({ isOpen, handleClose }) => {
+const SpecificModalType = ({
+    isOpen,
+    handleClickOnCloseButton,
+    handleClickOutside,
+}) => {
     return (
         <Modal
             isOpen={isOpen}
-            onClose={handleClose}
-            overlayClassName="success-modal"
+            handleClickOnCloseButton={handleClickOnCloseButton}
+            handleClickOutside={handleClickOnCloseButton}
+            hideTitle
+            hideCancelButton
+            hideConfirmButton
+            styleModifier={{
+                header: "success-modal__content__header",
+                mainContent: "success-modal__content_main",
+                footer: "success-modal__content__footer",
+            }}
         >
-            <div
-                className="success-modal__content"
-            >
-                <p>Employee created!</p>
 
-                <button
-                    autoFocus
-                    onClick={handleClose}
-                    className="button"
-                >
-                    Close
-                </button>
-            </div>
+            <p className="success-modal__content__main__success-text">Employee created!</p>
         </Modal>
     )
 }
 
 // routes/Landing.jsx
 
-import { useState } from "react"
+import { MODAL_OPEN_STATE, useModal } from "@signed-a/react-modal-component/dist"
 import { SpecificModalType } from "./path/to/your/component/library/folder"
 ... // other import statements
 
 const Landing = () => {
-    const [isOpen, setIsOpen] = useState(false)
+    const modal = useModal(MODAL_OPEN_STATE.CLOSED)
 
     return (
         <>
-            <header>
-                <h1>Example modal</h1>
-            </header>
+            ...
 
             <main>
+                ...
+
                 <button
-                    onClick={() => setIsOpen(true)}
+                    // retrieve the reference of the open button in
+                    // order to give it focus when closing the modal
+                    ref={modal.openButtonRef}
+
+                    onClick={modal.open}
                     className="button success-button"
                 >
                     Open success modal
@@ -146,54 +145,11 @@ const Landing = () => {
             </main>
 
             <SpecificModalType
-                isOpen={isOpen}
-                handleClose={() => setIsOpen(false)}
+                isOpen={modal.isOpen}
+                handleClickOnCloseButton={modal.close}
+                handleClickOutside={modal.clickOutside}
             />
         </>
-    )
-}
-```
-
-### 2.2 Advanced
-
-**To put the focus back on the last item that was active before the modal was opened.** Use the useRef hook to retrieve the reference of this element and use its current property to give it focus when closing the modal:
-
-```
-// routes/Landing.jsx
-
-... // import statements
-
-const Landing = () => {
-    const [isOpen, setIsOpen] = useState(false)
-    const openButtonRef = useRef(null)
-
-    const handleClose = () => {
-      setIsOpen(false)
-
-      openButtonRef.current.focus()
-    }
-
-    return (
-      <>
-        <header>
-          <h1>Example modal</h1>
-        </header>
-
-        <main>
-          <button
-            ref={openButtonRef}
-            onClick={() => setIsOpen(true)}
-            className="button success-button"
-          >
-            Open success modal
-          </button>
-        </main>
-
-        <SpecificModalType
-          isOpen={isOpen}
-          handleClose={handleClose}
-        />
-      </>
     )
 }
 ```
