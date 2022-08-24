@@ -260,7 +260,7 @@ const Modal = ({
     >
       <div
         id="react-modal-component-backdrop"
-        className={`react-modal-component__backdrop${
+        className={`react-modal-component-backdrop${
           styleModifier?.backdrop ? ` ${styleModifier?.backdrop}` : ""
         }${
           animationEnabled
@@ -268,138 +268,144 @@ const Modal = ({
             : ""
         }`}
       >
-        <div
-          className={`react-modal-component__content${
-            styleModifier?.contentContainer
-              ? ` ${styleModifier.contentContainer}`
-              : ""
-          }`}
-        >
-          <button
-            type="reset"
-            autoFocus
-            form={buttonsForm}
-            onClick={handleClickOnCloseButton}
-            className={`react-modal-component__button react-modal-component__content__close-button${
-              styleModifier?.closeButton
-                ? styleModifier?.closeButton
-                : ""
-            }${
-              animationEnabled
-                ? " react-modal-component__button--transition-enabled"
+        {isOpen && (
+          <div
+            className={`react-modal-component__content${
+              styleModifier?.contentContainer
+                ? ` ${styleModifier.contentContainer}`
                 : ""
             }`}
           >
-            {closeButtonIcon ? (
-              closeButtonIcon
-            ) : (
-              <svg
-                width={32}
-                height={32}
-                viewBox="0 0 320 512"
-                className={`react-modal-component__content__close-button__icon${
-                  styleModifier?.closeButtonIcon
-                    ? styleModifier?.closeButtonIcon
-                    : ""
-                }`}
-              >
-                {/* <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
-                <path
-                  d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
-                  fill="currentColor"
-                />
-              </svg>
-            )}
-          </button>
+            <button
+              type="reset"
+              autoFocus
+              form={buttonsForm}
+              onClick={handleClickOnCloseButton}
+              className={`react-modal-component__button react-modal-component__content__close-button${
+                styleModifier?.closeButton
+                  ? styleModifier?.closeButton
+                  : ""
+              }${
+                animationEnabled
+                  ? " react-modal-component__button--transition-enabled"
+                  : ""
+              }`}
+            >
+              {closeButtonIcon ? (
+                closeButtonIcon
+              ) : (
+                <svg
+                  width={32}
+                  height={32}
+                  viewBox="0 0 320 512"
+                  className={`react-modal-component__content__close-button__icon${
+                    styleModifier?.closeButtonIcon
+                      ? styleModifier?.closeButtonIcon
+                      : ""
+                  }`}
+                >
+                  {/* <!--! Font Awesome Pro 6.1.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --> */}
+                  <path
+                    d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"
+                    fill="currentColor"
+                  />
+                </svg>
+              )}
+            </button>
 
-          <header
-            className={`react-modal-component__content__header${
-              styleModifier?.header ? ` ${styleModifier?.header}` : ""
-            }`}
-          >
-            {headerContent
-              ? headerContent
-              : !hideTitle && (
-                  <h2
-                    className={`react-modal-component__content__header__title${
-                      styleModifier && styleModifier.title
-                        ? ` ${styleModifier.title}`
-                        : ""
-                    }`}
-                  >
-                    {title}
-                  </h2>
-                )}
-          </header>
+            <header
+              className={`react-modal-component__content__header${
+                styleModifier?.header
+                  ? ` ${styleModifier?.header}`
+                  : ""
+              }`}
+            >
+              {headerContent
+                ? headerContent
+                : !hideTitle && (
+                    <h2
+                      className={`react-modal-component__content__header__title${
+                        styleModifier && styleModifier.title
+                          ? ` ${styleModifier.title}`
+                          : ""
+                      }`}
+                    >
+                      {title}
+                    </h2>
+                  )}
+            </header>
 
-          <main
-            className={`react-modal-component__content__main${
-              styleModifier?.mainContent
-                ? ` ${styleModifier?.mainContent}`
-                : ""
-            }`}
-          >
-            {children}
-          </main>
+            <main
+              className={`react-modal-component__content__main${
+                styleModifier?.mainContent
+                  ? ` ${styleModifier?.mainContent}`
+                  : ""
+              }`}
+            >
+              {children}
+            </main>
 
-          <footer
-            className={`react-modal-component__content__footer${
-              styleModifier?.footer ? ` ${styleModifier?.footer}` : ""
-            }`}
-          >
-            {footerContent ? (
-              footerContent
-            ) : (
-              <>
-                {!hideConfirmButton && (
-                  <button
-                    type="submit"
-                    name={
-                      confirmButtonOptions?.name
-                        ? confirmButtonOptions?.name
-                        : "react-modal-component-confirm-button"
-                    }
-                    onClick={handleConfirm}
-                    form={buttonsForm}
-                    formNoValidate={
-                      confirmButtonOptions?.formNoValidate
-                    }
-                    formAction={confirmButtonOptions?.formAction}
-                    formEncType={confirmButtonOptions?.formEncType}
-                    formMethod={confirmButtonOptions?.formMethod}
-                    formTarget={confirmButtonOptions?.formTarget}
-                    className={`react-modal-component__button${
-                      styleModifier?.confirmButton
-                        ? ` ${styleModifier.confirmButton}`
-                        : ""
-                    }`}
-                  >
-                    {confirmButtonOptions?.content
-                      ? confirmButtonOptions?.content
-                      : "Confirmer"}
-                  </button>
-                )}
+            <footer
+              className={`react-modal-component__content__footer${
+                styleModifier?.footer
+                  ? ` ${styleModifier?.footer}`
+                  : ""
+              }`}
+            >
+              {footerContent ? (
+                footerContent
+              ) : (
+                <>
+                  {!hideConfirmButton && (
+                    <button
+                      type="submit"
+                      name={
+                        confirmButtonOptions?.name
+                          ? confirmButtonOptions?.name
+                          : "react-modal-component-confirm-button"
+                      }
+                      onClick={handleConfirm}
+                      form={buttonsForm}
+                      formNoValidate={
+                        confirmButtonOptions?.formNoValidate
+                      }
+                      formAction={confirmButtonOptions?.formAction}
+                      formEncType={confirmButtonOptions?.formEncType}
+                      formMethod={confirmButtonOptions?.formMethod}
+                      formTarget={confirmButtonOptions?.formTarget}
+                      className={`react-modal-component__button${
+                        styleModifier?.confirmButton
+                          ? ` ${styleModifier.confirmButton}`
+                          : ""
+                      }`}
+                    >
+                      {confirmButtonOptions?.content
+                        ? confirmButtonOptions?.content
+                        : "Confirmer"}
+                    </button>
+                  )}
 
-                {!hideCancelButton && (
-                  <button
-                    type="reset"
-                    onClick={handleCancel}
-                    form={buttonsForm}
-                    className={`react-modal-component__button${
-                      styleModifier?.cancelButton
-                        ? styleModifier?.cancelButton
-                        : ""
-                    }`}
-                  >
-                    {cancelButtonContent
-                      ? cancelButtonContent
-                      : "Annuler"}
-                  </button>
-                )}
-              </>
-            )}
-          </footer>
-        </div>
+                  {!hideCancelButton && (
+                    <button
+                      type="reset"
+                      onClick={handleCancel}
+                      form={buttonsForm}
+                      className={`react-modal-component__button${
+                        styleModifier?.cancelButton
+                          ? styleModifier?.cancelButton
+                          : ""
+                      }`}
+                    >
+                      {cancelButtonContent
+                        ? cancelButtonContent
+                        : "Annuler"}
+                    </button>
+                  )}
+                </>
+              )}
+            </footer>
+          </div>
+        )}
       </div>
     </div>
   )
