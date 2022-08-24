@@ -1,0 +1,285 @@
+.disable-scroll {
+  overflow: hidden;
+}
+
+.react-modal-component {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 99;
+  overflow: auto;
+}
+
+.react-modal-component--close {
+  display: none;
+}
+
+.react-modal-component__button {
+  box-sizing: border-box;
+  background-color: transparent;
+  border: 2px solid black;
+  border-radius: 0.4rem;
+  cursor: pointer;
+  padding: 0.7em 2em;
+  width: 8.8rem;
+  display: flex;
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.react-modal-component__button--transition-enabled {
+  transition: background-color 0.3s ease-in-out, outline 0.5s ease-in;
+}
+
+.react-modal-component__button:focus,
+.react-modal-component__button:focus-visible {
+  outline: 1px solid rgb(88, 88, 88);
+  outline-offset: 2px;
+}
+
+.react-modal-component__button:hover,
+.react-modal-component__button:active {
+  background-color: rgb(189 189 189);
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__button {
+    padding: 0.5em 1em;
+    width: 7rem;
+    font-size: 0.9rem;
+  }
+}
+
+.react-modal-component__backdrop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba(0, 0, 0, 0.5);
+  overflow: inherit;
+}
+
+.react-modal-component__backdrop--animation-enabled {
+  animation: fade 0.5s ease-in 0s;
+}
+
+@media (max-width: 1440px) {
+  .react-modal-component__backdrop {
+    align-items: center;
+  }
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__backdrop {
+    align-items: unset;
+  }
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__backdrop {
+    background: initial;
+  }
+
+  .react-modal-component__backdrop--animation-enabled {
+    animation: expand 0.3s ease-in;
+  }
+}
+
+.react-modal-component__content {
+  box-sizing: border-box;
+  position: relative;
+  width: 45%;
+  max-width: 450px;
+  height: fit-content;
+  max-height: 90vh;
+  margin-top: 5rem;
+  padding-block: 2.8rem 1rem;
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: 0.125rem solid black;
+  border-radius: 0.625rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+@media (max-width: 1440px) {
+  .react-modal-component__content {
+    margin-top: 0px;
+  }
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__content {
+    min-width: 320px;
+    margin-block: 2rem;
+  }
+}
+
+@media (max-width: 710px) {
+  .react-modal-component__content {
+    width: 50%;
+  }
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__content {
+    width: 100%;
+    min-width: unset;
+    height: auto;
+    max-height: none;
+    border: 0px none;
+    border-radius: 0px;
+    margin-block: 0px;
+    justify-content: flex-start;
+  }
+}
+
+.react-modal-component__content__close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: auto;
+  height: auto;
+  border-radius: 50%;
+  padding: 0.125rem;
+}
+
+.react-modal-component__content__close-button:focus
+  .react-modal-component__content__close-button__icon {
+  color: rgb(0, 0, 0);
+}
+
+.react-modal-component__content__close-button:hover
+  .react-modal-component__content__close-button__icon {
+  color: rgb(75, 75, 75);
+}
+
+.react-modal-component__content__close-button:active
+  .react-modal-component__content__close-button__icon {
+  color: rgb(43, 43, 43);
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__content__close-button {
+    top: 0.8rem;
+    right: 0.8rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__content__close-button {
+    right: 0.5rem;
+  }
+}
+
+.react-modal-component__content__close-button__icon {
+  height: 1.5rem;
+  width: 1.5rem;
+  color: black;
+  transition: color 0.5s ease-out;
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__content__close-button__icon {
+    height: 1rem;
+    width: 1rem;
+  }
+}
+
+.react-modal-component__content__header {
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+  border-bottom: 2px solid black;
+  padding-bottom: 1rem;
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__content__header {
+    border-bottom: 0px none;
+    padding: 0px 1rem;
+  }
+}
+
+.react-modal-component__content__header__title {
+  font-size: 2.375rem;
+  margin: 0;
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__content__header__title {
+    font-size: 1.75rem;
+  }
+}
+
+.react-modal-component__content__main {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 1rem 1.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow-y: auto;
+}
+
+@media (max-width: 992px) {
+  .react-modal-component__content__main {
+    height: auto;
+  }
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__content__main {
+    height: auto;
+    margin-block: 1rem;
+    padding-inline: 1rem;
+    overflow-y: visible;
+  }
+}
+
+.react-modal-component__content__footer {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  border-top: 2px solid black;
+  padding-top: 1rem;
+}
+
+@media (max-width: 500px) {
+  .react-modal-component__content__footer {
+    justify-content: space-evenly;
+    border-top: 0px none;
+    padding: 0px 1rem;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.5;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes expand {
+  from {
+    transform: scale(0.3);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
