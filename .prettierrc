@@ -4,5 +4,5 @@
   "singleQuote": false,
   "jsxSingleQuote": false,
   "quoteProps": "as-needed",
-  "printWidth": 52
+  "printWidth": 70
 }
