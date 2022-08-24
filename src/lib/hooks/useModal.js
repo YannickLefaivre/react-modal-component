@@ -70,7 +70,7 @@ const useModal = (initialOpeningState, formId = "") => {
 
     document.body.classList.remove("disable-scroll")
 
-    if (openButtonRef) {
+    if (openButtonRef.current) {
       openButtonRef.current.focus()
     }
   }
