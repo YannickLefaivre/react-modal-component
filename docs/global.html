@@ -66,7 +66,7 @@
             
             <nav>
                 
-                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Global</h3><ul><li><a href="global.html#Modal">Modal</a></li></ul></div>
+                    <h2><a href="index.html">Documentation</a></h2><div class="category"><h3>Modules</h3><ul><li><a href="module-useModal.html">useModal</a></li></ul><h3>Global</h3><ul><li><a href="global.html#Modal">Modal</a></li></ul></div>
                 
             </nav>
         </div>
@@ -174,9 +174,14 @@
     
     
     <div class="description">
-        <p>Displays a modal whose content is displayed with
-the <code>children</code> prop when the <code>isOpen</code> prop
-is true.</p>
+        <p>Provides the structure of a modal with:</p>
+<ul>
+<li>A header with the title of the latter,</li>
+<li>An empty body which can be filled with the <code>children</code> prop,</li>
+<li>A footer with a confirmation button and a button
+cancellation belonging to the form whose <code>id</code> corresponds
+to the value of the <code>buttonsForm</code> prop.</li>
+</ul>
     </div>
     
 
@@ -276,9 +281,9 @@ is true.</p>
 
     
         <p class="tag-source">
-            <a href="Modal.jsx.html" class="button">View Source</a>
+            <a href="components_Modal.jsx.html" class="button">View Source</a>
             <span>
-                <a href="Modal.jsx.html">Modal.jsx</a>, <a href="Modal.jsx.html#line125">line 125</a>
+                <a href="components_Modal.jsx.html">components/Modal.jsx</a>, <a href="components_Modal.jsx.html#line233">line 233</a>
             </span>
         </p>
     
@@ -332,7 +337,7 @@ is true.</p>
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>// YourStylizedModal.jsximport { Modal } from "@signed-a/react-modal-component/dist"// don't forget to add the style that participates// in the logic of opening and closing the modal.import "@signed-a/react-modal-component/dist/style.css"... // other import statementsimport "./YourStylisedModal.style.css"const YourStylizedModal = ({ isOpen, handleClose }) => {  return (    &lt;Modal      isOpen={isOpen}      onClose={handleClose}      overlayClassName="success-modal"    >      &lt;div        className="success-modal__content"      >        &lt;p>Employee created!&lt;/p>        &lt;button          autoFocus          onClick={handleClose}          className="button"        >          Close        &lt;/button>      &lt;/div>    &lt;/Modal>  )}// Landing.jsximport { useState, useRef } from "react"import { YourStylizedModal } from "./path/to/your/component/folder"... // other import statementsconst Landing = () => {  const [isOpen, setIsOpen] = useState(false)  // Allows you to give focus to the last element to have it  // before the modal opened.  const openButtonRef = useRef(null)  const handleClose = () => {    setIsOpen(false)    openButtonRef.current.focus()  }  return (    &lt;>      &lt;header>        &lt;h1>Example modal&lt;/h1>      &lt;/header>      &lt;main>        &lt;button          ref={openButtonRef}          onClick={() => setIsOpen(true)}          className="button success-button"        >          Open success modal        &lt;/button>      &lt;/main>      &lt;YourStylizedModal        isOpen={isOpen}        handleClose={handleClose}      />    &lt;/>  )}</code></pre>
+        <pre class="prettyprint"><code>const SignupModal = ({ isOpen, handleClickOutside, handleClickOnCloseButton,}) => { return (   &lt;Modal     isOpen={isOpen}     handleClickOutside={handleClickOutside}     handleClickOnCloseButton={       handleClickOnCloseButton     }     buttonsForm="signup-form"     headerContent={       &lt;>         &lt;h2 className="signup-modal__header__title">Inscription&lt;/h2>         &lt;p className="signup-modal__header__subtitle">           Création d'un compte utilisateur         &lt;/p>       &lt;/>     }     hideCancelButton     confirmButtonOptions={{       name: "signup-form-submit-button",       content: "S'inscrire",     }}     styleModifier={{       backdrop: "signup-modal",       header: "signup-modal__header",       confirmButton: "signup-modal__footer__confirm-button",     }}   >     &lt;form       id="signup-form"       action="#"       className="signup-form"     >       &lt;fieldset>         &lt;legend className="signup-form__fieldset__legend">           Identity         &lt;/legend>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="first-name">             First name:           &lt;/label>           &lt;input             type="text"             name="first-name"             id="first-name"           />         &lt;/div>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="last-name">             Last name:           &lt;/label>           &lt;input             type="text"             name="last-name"             id="last-name"           />         &lt;/div>       &lt;/fieldset>       &lt;fieldset>         &lt;legend className="signup-form__fieldset__legend">           Credentials         &lt;/legend>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="email">Email:&lt;/label>           &lt;input             type="text"             name="email"             id="email"           />         &lt;/div>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="password">             Password:           &lt;/label>           &lt;input             type="text"             name="password"             id="password"           />         &lt;/div>       &lt;/fieldset>     &lt;/form>   &lt;/Modal> )}</code></pre>
     
 
 
@@ -346,6 +351,281 @@ is true.</p>
         <div class='vertical-section'>
             <h1>Type Definitions</h1>
             <div class="members">
+            
+                <div class="member">
+
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
+        
+<code class="param-type">Object</code>
+
+
+    </span>
+
+<h4 class="name" id="ConfirmButtonOptions">
+    <a class="href-link" href="#ConfirmButtonOptions">#</a>
+    
+    <span class="code-name">
+        ConfirmButtonOptions
+    </span>
+    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Used to define the parameters of the form
+associated with the confirmation button, modify
+the value of its name attribute and replace its
+text with another text, an element or a component.</p>
+</div>
+
+
+
+
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+<div class="table-container">
+    <table class="props table">
+        <thead>
+        <tr>
+            
+            <th>Name</th>
+            
+
+            <th>Type</th>
+
+            
+
+            
+
+            <th class="last">Description</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>name</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-name">See the MDN reference of the &lt;button&gt; element <code>name</code> attribute</a></p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>formNoValidate</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formnovalidate">See the MDN reference of the &lt;button&gt; element <code>formNoValidate</code> attribute</a></p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>formAction</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formaction">See the MDN reference of the &lt;button&gt; element <code>formAction</code> attribute</a></p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>formEncType</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formenctype">See the MDN reference of the  &lt;button&gt; element <code>formEncType</code> attribute</a></p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>formMethod</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formmethod">See the MDN reference of the  &lt;button&gt; element <code>formMethod</code> attribute</a></p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>formTarget</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-formtarget">See the MDN reference of the &lt;button&gt; element <code>formTarget</code> attribute</a></p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>content</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+|
+
+<code class="param-type">React.ReactNode</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"><p>Allows you to replace the default button text
+with an element (e.g. an SVG icon), a component
+or a string.</p></td>
+</tr>
+
+        
+        </tbody>
+    </table>
+</div>
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    
+
+    
+
+    
+
+    
+        <p class="tag-source">
+            <a href="components_Modal.jsx.html" class="button">View Source</a>
+            <span>
+                <a href="components_Modal.jsx.html">components/Modal.jsx</a>, <a href="components_Modal.jsx.html#line5">line 5</a>
+            </span>
+        </p>
+    
+</dl>
+
+
+
+
+
+</div>
             
                 <div class="member">
 
@@ -442,7 +722,7 @@ is true.</p>
     <td class="type">
     
         
-<code class="param-type">ReactNode</code>
+<code class="param-type">React.ReactNode</code>
 
 
     
@@ -462,21 +742,22 @@ is true.</p>
         </td>
     
 
-    <td class="description last"><p>Represents the
-content of the modal.</p></td>
+    <td class="description last"><p>Represents the main content of the modal that
+will be displayed between the header and the
+footer.</p></td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>onClose</code></td>
+        <td class="name"><code>handleClickOutside</code></td>
     
 
     <td class="type">
     
         
-<code class="param-type"><a href="global.html#onClose">onClose</a></code>
+<code class="param-type">VoidFunction</code>
 
 
     
@@ -496,19 +777,123 @@ content of the modal.</p></td>
         </td>
     
 
-    <td class="description last"><p>The callback function
-that sets isOpen to false.</p>
-<ul>
-<li>This is used to close the modal when clicking
-on the background or pressing the <code>Escape</code> key.</li>
-</ul></td>
+    <td class="description last"><p>Manages the closing of the modal when the user
+clicks on the latter's backdrop.</p>
+<p><a href="module-useModal.html#~clickOutsideCallback"><code>See the type definition of this callback in the useModal module.</code></a></p></td>
 </tr>
 
         
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>overlayClassName</code></td>
+        <td class="name"><code>handleClickOnCloseButton</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">VoidFunction</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>handleConfirm</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">function</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+            () => {}
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>handleCancel</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">function</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+            () => {}
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>buttonsForm</code></td>
     
 
     <td class="type">
@@ -538,14 +923,407 @@ on the background or pressing the <code>Escape</code> key.</li>
         </td>
     
 
-    <td class="description last"><p>Allows to
-customize the style of the background of the
-modal.</p>
-<ul>
-<li>You can name your class whatever you want as
-long as you don't use the package namespace:
-<code>.react-modal-component*</code>.</li>
-</ul></td>
+    <td class="description last"><p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-form">See the MDN reference of the &lt;button&gt; element <code>form</code> attribute</a></p></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>title</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+            "Modal title"
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>animationEnabled</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+            false
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>hideTitle</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+            true
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>hideCancelButton</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+            true
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>hideConfirmButton</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">Boolean</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+            true
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>confirmButtonOptions</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type"><a href="global.html#ConfirmButtonOptions">ConfirmButtonOptions</a></code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>styleModifier</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type"><a href="global.html#ModalStyleModifier">ModalStyleModifier</a></code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>closeButtonIcon</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">React.ReactNode</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>headerContent</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">React.ReactNode</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>footerContent</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">React.ReactNode</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>cancelButtonContent</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+|
+
+<code class="param-type">React.ReactNode</code>
+
+
+    
+    </td>
+
+    
+        <td class="attributes">
+        
+            &lt;optional><br>
+        
+
+        
+        </td>
+    
+
+    
+        <td class="default">
+        
+        </td>
+    
+
+    <td class="description last"><p>Allows you to replace the default cancel button
+text with an element (e.g. an SVG icon), a
+component or a string.</p></td>
 </tr>
 
         
@@ -588,9 +1366,9 @@ long as you don't use the package namespace:
 
     
         <p class="tag-source">
-            <a href="Modal.jsx.html" class="button">View Source</a>
+            <a href="components_Modal.jsx.html" class="button">View Source</a>
             <span>
-                <a href="Modal.jsx.html">Modal.jsx</a>, <a href="Modal.jsx.html#line12">line 12</a>
+                <a href="components_Modal.jsx.html">components/Modal.jsx</a>, <a href="components_Modal.jsx.html#line66">line 66</a>
             </span>
         </p>
     
@@ -604,34 +1382,41 @@ long as you don't use the package namespace:
             
                 <div class="member">
 
-
-    
-    <h4 class="name" id="onClose">
-        <a class="href-link" href="#onClose">#</a>
+    <span class="method-parameter is-pulled-right">
+        <label>Type:</label>
         
-        <span class="code-name">
-            
-                onClose<span class="signature">(event)</span><span class="type-signature"> &rarr; {void}</span>
-            
-        </span>
-    </h4>
+<code class="param-type">Object</code>
+
+
+    </span>
+
+<h4 class="name" id="ModalStyleModifier">
+    <a class="href-link" href="#ModalStyleModifier">#</a>
     
-
+    <span class="code-name">
+        ModalStyleModifier
+    </span>
     
-    
+</h4>
+
+
+
+
+<div class="description">
+    <p>Allows you to modify the style of the different
+elements of the modal by adding additional CSS
+classes to them.</p>
+</div>
 
 
 
 
 
+    <h5 class="subsection-title">Properties:</h5>
 
-
-
-
-    <h5>Parameters:</h5>
     
 <div class="table-container">
-    <table class="params table">
+    <table class="props table">
         <thead>
         <tr>
             
@@ -650,39 +1435,239 @@ long as you don't use the package namespace:
 
         <tbody>
         
-
             
 <tr class="deep-level-0">
-  
-      <td class="name"><code>event</code></td>
-  
+    
+        <td class="name"><code>backdrop</code></td>
+    
 
-  <td class="type">
-  
-      
-<code class="param-type">MouseEvent</code>
-|
-
-<code class="param-type">KeyboardEvent</code>
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
 
 
-  
-  </td>
+    
+    </td>
 
-  
+    
 
-  
+    
 
-  <td class="description last"></td>
+    <td class="description last"></td>
 </tr>
 
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>contentContainer</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>header</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>title</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>mainContent</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>footer</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>confirmButton</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>cancelButton</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>closeButton</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
+
+        
+            
+<tr class="deep-level-0">
+    
+        <td class="name"><code>closeButtonIcon</code></td>
+    
+
+    <td class="type">
+    
+        
+<code class="param-type">String</code>
+
+
+    
+    </td>
+
+    
+
+    
+
+    <td class="description last"></td>
+</tr>
 
         
         </tbody>
     </table>
 </div>
-
-
 
 
 
@@ -719,53 +1704,14 @@ long as you don't use the package namespace:
 
     
         <p class="tag-source">
-            <a href="Modal.jsx.html" class="button">View Source</a>
+            <a href="components_Modal.jsx.html" class="button">View Source</a>
             <span>
-                <a href="Modal.jsx.html">Modal.jsx</a>, <a href="Modal.jsx.html#line5">line 5</a>
+                <a href="components_Modal.jsx.html">components/Modal.jsx</a>, <a href="components_Modal.jsx.html#line38">line 38</a>
             </span>
         </p>
     
 </dl>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class='columns method-parameter'>
-        <div class="column is-2"><label>Returns:</label></div>
-        <div class="column is-10">
-            
-                    
-
-<div class="columns">
-    
-    
-    <div class='column is-5 has-text-left'>
-        <label>Type: </label>
-        
-<code class="param-type">void</code>
-
-
-    </div>
-    
-</div>
-
-                
-        </div>
-    </div>
 
 
 

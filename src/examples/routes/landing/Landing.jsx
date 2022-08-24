@@ -1,12 +1,9 @@
-import {
-  MODAL_OPENING_STATE,
-  useModal,
-} from "../../../lib"
-import { SuccessModal } from "../../components/SuccessModal"
+import { MODAL_OPEN_STATE, useModal } from "../../../lib"
+import { SignupModal } from "../../components/SignupModal"
 import "./Landing.style.css"
 
 const Landing = () => {
-  const modal = useModal(MODAL_OPENING_STATE.CLOSED)
+  const modal = useModal(MODAL_OPEN_STATE.CLOSED, "signup-form")
 
   return (
     <>
@@ -16,11 +13,9 @@ const Landing = () => {
 
       <main className="main-content main-content--landing">
         <p className="example-description">
-          You can use the Modal component in
-          different ways either by including it
-          directly in the component that holds the
-          open button or by wrapping it in a custom
-          modal component.
+          You can use the Modal component in different ways either by
+          including it directly in the component that holds the open
+          button or by wrapping it in a custom modal component.
         </p>
 
         <button
@@ -28,11 +23,11 @@ const Landing = () => {
           onClick={modal.open}
           className="button success-button"
         >
-          Open success modal v2
+          Subscribe
         </button>
       </main>
 
-      <SuccessModal
+      <SignupModal
         isOpen={modal.isOpen}
         handleClickOutside={modal.clickOutside}
         handleClickOnCloseButton={modal.close}
