@@ -26,13 +26,11 @@ const SignupModal = ({
       handleClickOutside={handleClickOutside}
       handleClickOnCloseButton={handleClickOnCloseButton}
       buttonsForm="signup-form"
-      headerContent={
-        <>
-          <h2 className="signup-modal__header__title">Inscription</h2>
-          <p className="signup-modal__header__subtitle">
-            Création d'un compte utilisateur
-          </p>
-        </>
+      title="Inscription"
+      subHeaderContent={
+        <p className="signup-modal__header__subtitle">
+          Création d'un compte utilisateur
+        </p>
       }
       hideCancelButton
       confirmButtonOptions={{

@@ -12,7 +12,7 @@
 }
 
 .signup-modal__header__subtitle {
-  margin-block: 0px;
+  margin-block: 1rem 0.3rem;
 }
 
 .signup-modal__footer__confirm-button {
