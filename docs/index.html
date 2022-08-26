@@ -112,6 +112,12 @@
 <pre class="prettyprint source"><code>npm install @signed-a/react-modal-component
 </code></pre>
 <h2>2. Usage</h2>
+<blockquote>
+<p><strong>IMPORTANT !</strong> Since version 2.2.0 of the package, if you do not provide the <code>title</code> prop no header will be rendered and the <code>subHeaderContent</code> prop will have no effect. <em>Also, the <code>subHeaderContent</code> prop replaces the <code>headerContent</code> prop that was removed from the modal component.</em></p>
+</blockquote>
+<blockquote>
+<p><strong>IMPORTANT !</strong> With version 2.2.0, the <code>footerContent</code> prop no longer removes the default buttons from the modal. You'll have to explicitly remove them by providing the <code>hideCancelButton</code> and <code>hideConfirmButton</code> props so the modal won't render them.</p>
+</blockquote>
 <h3>2.1 Basic</h3>
 <p>There are two ways to use the Modal component:</p>
 <ul>
@@ -160,12 +166,10 @@ const Landing = () => {
                 isOpen={modal.isOpen}
                 handleClickOnCloseButton={modal.close}
                 handleClickOutside={modal.clickOutside}
-                hideTitle
+                title=&quot;Success&quot;
                 hideCancelButton
                 hideConfirmButton
                 styleModifier={{
-                    header: &quot;success-modal__content__header&quot;,
-                    mainContent: &quot;success-modal__content_main&quot;,
                     footer: &quot;success-modal__content__footer&quot;,
                 }}
             >
@@ -196,12 +200,10 @@ const SpecificModalType = ({
             isOpen={isOpen}
             handleClickOnCloseButton={handleClickOnCloseButton}
             handleClickOutside={handleClickOnCloseButton}
-            hideTitle
-            hideCancelButton
+            title=&quot;Success&quot;
             hideConfirmButton
+            hideCancelButton
             styleModifier={{
-                header: &quot;success-modal__content__header&quot;,
-                mainContent: &quot;success-modal__content_main&quot;,
                 footer: &quot;success-modal__content__footer&quot;,
             }}
         >

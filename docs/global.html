@@ -283,7 +283,7 @@ to the value of the <code>buttonsForm</code> prop.</li>
         <p class="tag-source">
             <a href="components_Modal.jsx.html" class="button">View Source</a>
             <span>
-                <a href="components_Modal.jsx.html">components/Modal.jsx</a>, <a href="components_Modal.jsx.html#line233">line 233</a>
+                <a href="components_Modal.jsx.html">components/Modal.jsx</a>, <a href="components_Modal.jsx.html#line234">line 234</a>
             </span>
         </p>
     
@@ -337,7 +337,7 @@ to the value of the <code>buttonsForm</code> prop.</li>
     <h5>Example</h5>
     
     
-        <pre class="prettyprint"><code>const SignupModal = ({ isOpen, handleClickOutside, handleClickOnCloseButton,}) => { return (   &lt;Modal     isOpen={isOpen}     handleClickOutside={handleClickOutside}     handleClickOnCloseButton={       handleClickOnCloseButton     }     buttonsForm="signup-form"     headerContent={       &lt;>         &lt;h2 className="signup-modal__header__title">Inscription&lt;/h2>         &lt;p className="signup-modal__header__subtitle">           Création d'un compte utilisateur         &lt;/p>       &lt;/>     }     hideCancelButton     confirmButtonOptions={{       name: "signup-form-submit-button",       content: "S'inscrire",     }}     styleModifier={{       backdrop: "signup-modal",       header: "signup-modal__header",       confirmButton: "signup-modal__footer__confirm-button",     }}   >     &lt;form       id="signup-form"       action="#"       className="signup-form"     >       &lt;fieldset>         &lt;legend className="signup-form__fieldset__legend">           Identity         &lt;/legend>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="first-name">             First name:           &lt;/label>           &lt;input             type="text"             name="first-name"             id="first-name"           />         &lt;/div>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="last-name">             Last name:           &lt;/label>           &lt;input             type="text"             name="last-name"             id="last-name"           />         &lt;/div>       &lt;/fieldset>       &lt;fieldset>         &lt;legend className="signup-form__fieldset__legend">           Credentials         &lt;/legend>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="email">Email:&lt;/label>           &lt;input             type="text"             name="email"             id="email"           />         &lt;/div>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="password">             Password:           &lt;/label>           &lt;input             type="text"             name="password"             id="password"           />         &lt;/div>       &lt;/fieldset>     &lt;/form>   &lt;/Modal> )}</code></pre>
+        <pre class="prettyprint"><code>const SignupModal = ({ isOpen, handleClickOutside, handleClickOnCloseButton,}) => { return (   &lt;Modal     isOpen={isOpen}     handleClickOutside={handleClickOutside}     handleClickOnCloseButton={       handleClickOnCloseButton     }     buttonsForm="signup-form"     title="Inscription"     subHeaderContent={       &lt;p className="signup-modal__header__subtitle">           Création d'un compte utilisateur       &lt;/p>     }     hideCancelButton     confirmButtonOptions={{       name: "signup-form-submit-button",       content: "S'inscrire",     }}     styleModifier={{       backdrop: "signup-modal",       header: "signup-modal__header",       confirmButton: "signup-modal__footer__confirm-button",     }}   >     &lt;form       id="signup-form"       action="#"       className="signup-form"     >       &lt;fieldset>         &lt;legend className="signup-form__fieldset__legend">           Identity         &lt;/legend>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="first-name">             First name:           &lt;/label>           &lt;input             type="text"             name="first-name"             id="first-name"           />         &lt;/div>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="last-name">             Last name:           &lt;/label>           &lt;input             type="text"             name="last-name"             id="last-name"           />         &lt;/div>       &lt;/fieldset>       &lt;fieldset>         &lt;legend className="signup-form__fieldset__legend">           Credentials         &lt;/legend>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="email">Email:&lt;/label>           &lt;input             type="text"             name="email"             id="email"           />         &lt;/div>         &lt;div className="signup-form__fieldset__field">           &lt;label htmlFor="password">             Password:           &lt;/label>           &lt;input             type="text"             name="password"             id="password"           />         &lt;/div>       &lt;/fieldset>     &lt;/form>   &lt;/Modal> )}</code></pre>
     
 
 
@@ -955,12 +955,12 @@ clicks on the latter's backdrop.</p>
     
         <td class="default">
         
-            "Modal title"
-        
         </td>
     
 
-    <td class="description last"></td>
+    <td class="description last"><p>The title displayed in
+the modal's header. If this property is not
+provided then no header will be rendered.</p></td>
 </tr>
 
         
@@ -1220,7 +1220,7 @@ clicks on the latter's backdrop.</p>
             
 <tr class="deep-level-0">
     
-        <td class="name"><code>headerContent</code></td>
+        <td class="name"><code>subHeaderContent</code></td>
     
 
     <td class="type">
@@ -1248,7 +1248,8 @@ clicks on the latter's backdrop.</p>
         </td>
     
 
-    <td class="description last"></td>
+    <td class="description last"><p>The additional
+content that displays after the title in the header.</p></td>
 </tr>
 
         

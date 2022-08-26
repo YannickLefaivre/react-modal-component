@@ -88,7 +88,9 @@ import "./Modal.css"
  * @property {String} [buttonsForm=""]
  * [See the MDN reference of the \<button\> element `form` attribute]{@link https://developer.mozilla.org/en-US/docs/Web/HTML/Element/button#attr-form}
  *
- * @property {String} [title="Modal title"]
+ * @property {String} [title] The title displayed in
+ * the modal's header. If this property is not
+ * provided then no header will be rendered.
  *
  * @property {Boolean} [animationEnabled=false]
  *
@@ -104,7 +106,8 @@ import "./Modal.css"
  *
  * @property {React.ReactNode} [closeButtonIcon]
  *
- * @property {React.ReactNode} [headerContent]
+ * @property {React.ReactNode} [subHeaderContent] The additional
+ * content that displays after the title in the header.
  *
  * @property {React.ReactNode} [footerContent]
  *
@@ -144,13 +147,11 @@ import "./Modal.css"
  *        handleClickOnCloseButton
  *      }
  *      buttonsForm="signup-form"
- *      headerContent={
- *        <>
- *          <h2 className="signup-modal__header__title">Inscription</h2>
- *          <p className="signup-modal__header__subtitle">
+ *      title="Inscription"
+ *      subHeaderContent={
+ *        <p className="signup-modal__header__subtitle">
  *            Création d'un compte utilisateur
- *          </p>
- *        </>
+ *        </p>
  *      }
  *      hideCancelButton
  *      confirmButtonOptions={{
@@ -240,13 +241,12 @@ const Modal = ({
   buttonsForm,
   title,
   animationEnabled,
-  hideTitle,
   hideCancelButton,
   hideConfirmButton,
   confirmButtonOptions,
   styleModifier,
   closeButtonIcon,
-  headerContent,
+  subHeaderContent,
   footerContent,
   cancelButtonContent,
 }) => {
@@ -313,27 +313,27 @@ const Modal = ({
               )}
             </button>
 
-            <header
-              className={`react-modal-component__content__header${
-                styleModifier?.header
-                  ? ` ${styleModifier?.header}`
-                  : ""
-              }`}
-            >
-              {headerContent
-                ? headerContent
-                : !hideTitle && (
-                    <h2
-                      className={`react-modal-component__content__header__title${
-                        styleModifier && styleModifier.title
-                          ? ` ${styleModifier.title}`
-                          : ""
-                      }`}
-                    >
-                      {title}
-                    </h2>
-                  )}
-            </header>
+            {title && (
+              <header
+                className={`react-modal-component__content__header${
+                  styleModifier?.header
+                    ? ` ${styleModifier?.header}`
+                    : ""
+                }`}
+              >
+                <h2
+                  className={`react-modal-component__content__header__title${
+                    styleModifier && styleModifier.title
+                      ? ` ${styleModifier.title}`
+                      : ""
+                  }`}
+                >
+                  {title}
+                </h2>
+
+                {subHeaderContent && subHeaderContent}
+              </header>
+            )}
 
             <main
               className={`react-modal-component__content__main${
@@ -352,57 +352,53 @@ const Modal = ({
                   : ""
               }`}
             >
-              {footerContent ? (
-                footerContent
-              ) : (
-                <>
-                  {!hideConfirmButton && (
-                    <button
-                      type="submit"
-                      name={
-                        confirmButtonOptions?.name
-                          ? confirmButtonOptions?.name
-                          : "react-modal-component-confirm-button"
-                      }
-                      onClick={handleConfirm}
-                      form={buttonsForm}
-                      formNoValidate={
-                        confirmButtonOptions?.formNoValidate
-                      }
-                      formAction={confirmButtonOptions?.formAction}
-                      formEncType={confirmButtonOptions?.formEncType}
-                      formMethod={confirmButtonOptions?.formMethod}
-                      formTarget={confirmButtonOptions?.formTarget}
-                      className={`react-modal-component__button${
-                        styleModifier?.confirmButton
-                          ? ` ${styleModifier.confirmButton}`
-                          : ""
-                      }`}
-                    >
-                      {confirmButtonOptions?.content
-                        ? confirmButtonOptions?.content
-                        : "Confirmer"}
-                    </button>
-                  )}
-
-                  {!hideCancelButton && (
-                    <button
-                      type="reset"
-                      onClick={handleCancel}
-                      form={buttonsForm}
-                      className={`react-modal-component__button${
-                        styleModifier?.cancelButton
-                          ? styleModifier?.cancelButton
-                          : ""
-                      }`}
-                    >
-                      {cancelButtonContent
-                        ? cancelButtonContent
-                        : "Annuler"}
-                    </button>
-                  )}
-                </>
+              {!hideConfirmButton && (
+                <button
+                  type="submit"
+                  name={
+                    confirmButtonOptions?.name
+                      ? confirmButtonOptions?.name
+                      : "react-modal-component-confirm-button"
+                  }
+                  onClick={handleConfirm}
+                  form={buttonsForm}
+                  formNoValidate={
+                    confirmButtonOptions?.formNoValidate
+                  }
+                  formAction={confirmButtonOptions?.formAction}
+                  formEncType={confirmButtonOptions?.formEncType}
+                  formMethod={confirmButtonOptions?.formMethod}
+                  formTarget={confirmButtonOptions?.formTarget}
+                  className={`react-modal-component__button${
+                    styleModifier?.confirmButton
+                      ? ` ${styleModifier.confirmButton}`
+                      : ""
+                  }`}
+                >
+                  {confirmButtonOptions?.content
+                    ? confirmButtonOptions?.content
+                    : "Confirmer"}
+                </button>
               )}
+
+              {!hideCancelButton && (
+                <button
+                  type="reset"
+                  onClick={handleCancel}
+                  form={buttonsForm}
+                  className={`react-modal-component__button${
+                    styleModifier?.cancelButton
+                      ? styleModifier?.cancelButton
+                      : ""
+                  }`}
+                >
+                  {cancelButtonContent
+                    ? cancelButtonContent
+                    : "Annuler"}
+                </button>
+              )}
+
+              {footerContent && footerContent}
             </footer>
           </div>
         )}
@@ -419,8 +415,8 @@ Modal.propTypes = {
   handleCancel: PropTypes.func.isRequired,
   handleConfirm: PropTypes.func.isRequired,
   buttonsForm: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
   animationEnabled: PropTypes.bool.isRequired,
+  title: PropTypes.string,
   hideTitle: PropTypes.bool,
   hideCancelButton: PropTypes.bool,
   hideConfirmButton: PropTypes.bool,
@@ -449,7 +445,7 @@ Modal.propTypes = {
   }),
 
   closeButtonIcon: PropTypes.node,
-  headerContent: PropTypes.node,
+  subHeaderContent: PropTypes.node,
   footerContent: PropTypes.node,
   cancelButtonContent: PropTypes.node,
 }
@@ -458,7 +454,6 @@ Modal.defaultProps = {
   handleCancel: () => {},
   handleConfirm: () => {},
   buttonsForm: "",
-  title: "Modal title",
   animationEnabled: false,
   hideTitle: false,
   hideCancelButton: false,
