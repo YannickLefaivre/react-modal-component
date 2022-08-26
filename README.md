@@ -14,6 +14,10 @@ npm install @signed-a/react-modal-component
 
 ## 2. Usage
 
+> **IMPORTANT !** Since version 2.2.0 of the package, if you do not provide the `title` prop no header will be rendered and the `subHeaderContent` prop will have no effect. _Also, the `subHeaderContent` prop replaces the `headerContent` prop that was removed from the modal component._
+
+> **IMPORTANT !** With version 2.2.0, the `footerContent` prop no longer removes the default buttons from the modal. You'll have to explicitly remove them by providing the `hideCancelButton` and `hideConfirmButton` props so the modal won't render them.
+
 ### 2.1 Basic
 
 There are two ways to use the Modal component:
@@ -64,12 +68,10 @@ const Landing = () => {
                 isOpen={modal.isOpen}
                 handleClickOnCloseButton={modal.close}
                 handleClickOutside={modal.clickOutside}
-                hideTitle
+                title="Success"
                 hideCancelButton
                 hideConfirmButton
                 styleModifier={{
-                    header: "success-modal__content__header",
-                    mainContent: "success-modal__content_main",
                     footer: "success-modal__content__footer",
                 }}
             >
@@ -101,12 +103,10 @@ const SpecificModalType = ({
             isOpen={isOpen}
             handleClickOnCloseButton={handleClickOnCloseButton}
             handleClickOutside={handleClickOnCloseButton}
-            hideTitle
-            hideCancelButton
+            title="Success"
             hideConfirmButton
+            hideCancelButton
             styleModifier={{
-                header: "success-modal__content__header",
-                mainContent: "success-modal__content_main",
                 footer: "success-modal__content__footer",
             }}
         >
