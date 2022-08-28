@@ -16,8 +16,6 @@ const mainPlugins = [
   }),
 ]
 
-const umdBuildExternal = [...mainExternal, "./Modal.css"]
-
 const esmBuildPlugins = [
   ...mainPlugins,
   css({
@@ -26,20 +24,6 @@ const esmBuildPlugins = [
 ]
 
 const config = [
-  {
-    input: mainInput,
-    output: {
-      file: "dist/umd/index.js",
-      format: "umd",
-      name: "signedA.Modal",
-      globals: {
-        react: "React",
-        "prop-types": "PropTypes",
-      },
-    },
-    external: umdBuildExternal,
-    plugins: mainPlugins,
-  },
   {
     input: mainInput,
     output: {
