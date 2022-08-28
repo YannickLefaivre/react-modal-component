@@ -283,7 +283,7 @@ const Modal = ({
               onClick={handleClickOnCloseButton}
               className={`react-modal-component__button react-modal-component__content__close-button${
                 styleModifier?.closeButton
-                  ? styleModifier?.closeButton
+                  ? ` ${styleModifier?.closeButton}`
                   : ""
               }${
                 animationEnabled
@@ -300,7 +300,7 @@ const Modal = ({
                   viewBox="0 0 320 512"
                   className={`react-modal-component__content__close-button__icon${
                     styleModifier?.closeButtonIcon
-                      ? styleModifier?.closeButtonIcon
+                      ? ` ${styleModifier?.closeButtonIcon}`
                       : ""
                   }`}
                 >
@@ -388,7 +388,7 @@ const Modal = ({
                   form={buttonsForm}
                   className={`react-modal-component__button${
                     styleModifier?.cancelButton
-                      ? styleModifier?.cancelButton
+                      ? ` ${styleModifier?.cancelButton}`
                       : ""
                   }`}
                 >
