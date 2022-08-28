@@ -31,7 +31,7 @@ import {
     Modal,
     useModal,
     MODAL_OPEN_STATE,
-} from "@signed-a/react-modal-component/dist"
+} from "@signed-a/react-modal-component/dist" // Import only the ES Module distribution because the umd distribution does not have autocompletion and does not indicate the type of the component props.
 
 // don't forget to add the style that participates in the logic of
 // opening and closing the modal.
@@ -153,6 +153,12 @@ const Landing = () => {
     )
 }
 ```
+
+## Suivi des modifications
+
+Please remember to consult the [CHANGELOG.md](https://github.com/YannickLefaivre/react-modal-component/blob/main/CHANGELOG.md) file in order to be aware of the latest changes to the package.
+
+_Such as the temporary removal of the umd build for the 3.0.0 version of the package._
 
 ## 2. Consult the documentation
 
