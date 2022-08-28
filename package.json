@@ -1,7 +1,7 @@
 {
   "name": "@signed-a/react-modal-component",
   "description": "Modal component constructed to be design independent.",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [

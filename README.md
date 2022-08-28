@@ -154,12 +154,12 @@ const Landing = () => {
 }
 ```
 
-## Suivi des modifications
+## 2. Change tracking
 
 Please remember to consult the [CHANGELOG.md](https://github.com/YannickLefaivre/react-modal-component/blob/main/CHANGELOG.md) file in order to be aware of the latest changes to the package.
 
 _Such as the temporary removal of the umd build for the 3.0.0 version of the package._
 
-## 2. Consult the documentation
+## 3. Consult the documentation
 
 Documentation of the code can be found in the docs folder. By opening the [project github page](https://yannicklefaivre.github.io/react-modal-component/), you will have access to this file _(README.md)_ as well as to the documentation of the modal component.
